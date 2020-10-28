@@ -3,7 +3,6 @@ import "../Components/taskStyle.css"
 import { Link, useHistory } from "react-router-dom";
 
 
-
 const TaskComponent = (props) => {
 
 let buttonApproved = {
