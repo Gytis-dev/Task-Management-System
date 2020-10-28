@@ -1,0 +1,112 @@
+.createIssue {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px rgba(95, 95, 95, 0.158);
+}
+
+.close-button {
+    position: absolute;
+    right: 10px;
+    padding: 0;
+    top: 0;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+}
+
+.grid-createIssue {
+    text-align: left;
+    padding: 20px 20px 40px 20px;
+}
+
+.createIssue-name {
+    text-transform: uppercase;
+    color: #707070;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 0 0 22px 0;
+}
+
+.createIssue-name::after {
+    content: '';
+    border-bottom: 2px solid rgba(95, 95, 95, 0.4);
+    opacity: 0.5;
+    margin-top: 14px;
+    width: 100%;
+    display: block;
+}
+
+.input-design-textarea {
+    width: 100%;
+    outline: none;
+    resize: none;
+    border: solid 1px rgba(95, 95, 95, 0.158);
+    height: 150px;
+}
+
+.input-label {
+    color: #707070;
+    font-size: 14px;
+    padding: 0 0 10px 0;
+}
+
+.input-design {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: none;
+    outline: none;
+    color: #707070;
+    border: solid 1px rgba(95, 95, 95, 0.158);
+}
+
+.input-button {
+    display: flex;
+    justify-content: center;
+}
+
+.input-button button {
+    width: 90%;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 3px;
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: #fe4066;
+    margin-top: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.input-button button:hover {
+    width: 95%;
+}
+
+.input-design::placeholder {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.nav-2 ul li {
+    font-weight: 600;
+    cursor: pointer;
+}
+.error-name{
+    padding: 5px 10px 10px 10px;
+    font-size: 12px;
+    color: #fe4066;
+    font-weight: 600;
+}
+
+.nav-2 ul li:hover {
+    color: lightpink;
+}
