@@ -65,7 +65,6 @@ let changeStatus = (item) => {
 
     return (
         <Router>
-            HELLOOOO
             <div className="wrapper-home">
                 <Navbar name={useris} handleFormSubmit={submit} />
                 <LeftSection />
