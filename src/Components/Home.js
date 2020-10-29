@@ -43,7 +43,7 @@ const Home = () => {
         }
     ])
 
-// statuso pakeitimas
+    // statuso pakeitimas
 let changeStatus = (item) => {
     task.map((taskas) => {
         if (taskas.id === item.id){
@@ -67,7 +67,7 @@ let changeStatus = (item) => {
         <Router>
             belekas
             <div className="wrapper-home">
-                <Navbar name={useris} handleFormSubmit={submit} />
+                <Navbar name={useris} handleFormSubmit={submit}/>
                 <LeftSection />
                 <Route path="/home" exact render={(props) => <Table {...props} addItem={task} />} />
                 <Route path="/home/:id" exact render={(props) => <TaskInfo {...props} change = {changeStatus}/>}/>
