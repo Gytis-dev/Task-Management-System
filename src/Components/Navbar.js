@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
 
-    const [style, setStyle] = useState({ visibility: "hidden" })
+    const [style, setStyle] = useState({ visibility: "hidden"})
 
     const [input, setInput] = useState({
         name: "",
@@ -90,8 +90,8 @@ const Navbar = (props) => {
 
     return (
         <div className="nav">
+            <div className = "overlay" style = {style}> </div>
             <div className="nav-2">
-
                 <ul>
                     <Link to = "/home"><li>Dashboard</li></Link>
                     <li onClick={() => setStyle({ visibility: "visible" })}>Create Issue</li>
@@ -99,10 +99,8 @@ const Navbar = (props) => {
                     <li>My Reports</li>
                 </ul>
             </div>
-
             <div className="nav-1 ">
                 <h3>Logged in as: {props.name}</h3>
-
             </div>
 
             <div className="createIssue" style={style}>
