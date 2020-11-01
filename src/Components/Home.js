@@ -8,9 +8,7 @@ import Table from "../Components/Table";
 import TaskInfo from "../Components/TaskInfo";
 import { loginVerification, loginStatus } from "../Components/loginVerification";
 
-
 const Home = () => {
-
     let useris = localStorage.getItem("useris");
 
     const [task, setTask] = useState([
@@ -21,7 +19,8 @@ const Home = () => {
             priority: "low",
             date: "2020-10-06",
             status: "Submitted",
-            comment: "skskskskskskskskskskskskks"
+            comment: "skskskskskskskskskskskskks",
+          
         },
         {
             id: 2,
@@ -30,7 +29,8 @@ const Home = () => {
             priority: "High",
             date: "2020-10-04",
             status: "Submitted",
-            comment: "skskskskskskskskskskskskks"
+            comment: "skskskskskskskskskskskskks",
+           
         },
         {
             id: 3,
@@ -39,41 +39,66 @@ const Home = () => {
             priority: "Middle",
             date: "2020-10-02",
             status: "Submitted",
-            comment: "skskskskskskskskskskskskks"
+            comment: "skskskskskskskskskskskskks",
+          
         }
     ])
+    const [open, setOpen] = useState();
 
     // statuso pakeitimas
-let changeStatus = (item) => {
-    task.map((taskas) => {
-        if (taskas.id === item.id){
-            taskas.status = "Approved";
-            localStorage.setItem("itemData", JSON.stringify(task));
-        }
-    })
-}
+    let changeStatus = (item) => {
+        task.map((taskas) => {
+            if (taskas.id === item.id) {
+                taskas.status = "Approved";
+                localStorage.setItem("itemData", JSON.stringify(task));
+            }
+        })
+        updateOpenIssue();
+    }
+
+    let updateOpenIssue = () => {
+        let updatingOpenIssues = task.filter((openIssue) => openIssue.status === "Submitted");
+        setOpen(updatingOpenIssues);
+    }
+
     let submit = (newItem) => {
         newItem.id = task.length + 1;
         setTask([...task, newItem]);
         localStorage.setItem("itemData", JSON.stringify(task));
+        updateOpenIssue();
     }
     useEffect(() => {
         let itemData = localStorage.getItem("itemData");
         itemData = JSON.parse(itemData);
         itemData ? setTask(itemData) : setTask(task);
-    }, [])
 
+    // Uzduociu filtravimui updeitinam taskus pagal ju statusa
+    
+        if (itemData) {
+            let openData = itemData.filter((openIssue) => 
+            openIssue.status === "Submitted"
+        )
+        setOpen(openData)  
+        }
+        else {
+            setOpen(task);
+        }     
+    }, [])
+    
     return (
         <Router>
             <div className="wrapper-home">
-                <Navbar name={useris} handleFormSubmit={submit}/>
+                <Navbar name={useris} handleFormSubmit={submit} />
                 <LeftSection />
                 <Route path="/home" exact render={(props) => <Table {...props} addItem={task} />} />
-                <Route path="/home/:id" exact render={(props) => <TaskInfo {...props} change = {changeStatus}/>}/>
+                <Route path="/home/open" exact render={(props) => <Table {...props} addItem={open}/>}/>
+                <Route path="/home/open/:id" exact render={(props) => <TaskInfo {...props} change={changeStatus} />}/>      
             </div>
         </Router>
     );
 
 }
+
+
 
 export default Home;

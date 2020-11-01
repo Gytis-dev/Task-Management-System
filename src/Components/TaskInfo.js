@@ -18,7 +18,6 @@ const TaskInfo = (props) => {
         alert("Mark this task as complete? Press Yes");
         setState({status: "Approved"})
         props.change(state);
-
     }
     return (
         <div>
@@ -30,7 +29,6 @@ const TaskInfo = (props) => {
             <li>{date}</li>
             <li>{state.status}</li>
             <li>{comment}</li>
-
             <button onClick = {changeStatus}>Change status</button>
         </div>
     );

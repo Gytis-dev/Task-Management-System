@@ -6,14 +6,14 @@ import { Link, useHistory } from "react-router-dom";
 const TaskComponent = (props) => {
 
 let buttonApproved = {
-    background:"#22eaaa",
+    border:" 2px solid #28a745",
     textAlign:"center",
     borderRadius:"20px",
     padding:'5px'
 }
 
 let buttonStyleRegular = {
-    background:"#e6c073",
+    border:" 2px solid #ffc107",
     textAlign:"center",
     borderRadius:"20px",
     padding:'5px'
@@ -29,7 +29,7 @@ let buttonStyleRegular = {
                 <td>{props.prop.date}</td>
                 <td ><div style={props.prop.status == "Approved" ? buttonApproved : buttonStyleRegular}> {props.prop.status}</div></td>
                 <td><Link to={{
-                    pathname: `/home/${props.prop.name}`,
+                    pathname: `/home/open/${props.prop.name}`,
                     state: {
                         from: props.prop
                     }

@@ -68,7 +68,7 @@ const Navbar = (props) => {
         let isValid = formValid();
 
         if (isValid === true) {
-            console.log("yes")
+           
             let object = {
                 id: 3,
                 name: input.name,
