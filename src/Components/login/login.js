@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import "../Components/LoginStyle.css";
+import "../login/login-style.scss";
 import { Link } from "react-router-dom";
-import loginVerification from "./loginVerification";
-
+import loginVerification from "../login/login-verification";
+import  "../../global-style/buttons.scss";
+import  "../../global-style/postion.scss";
+import  "../../global-style/font.scss";
 
 const Login = (props) => {
-    // Login input state
     const [input, setInput] = useState({ username: "", password: "" });
-
-    // Users
     let users = [
         {
             name: "Gytis",
@@ -20,8 +19,6 @@ const Login = (props) => {
         }
     ]
 
-
-    // Login input handler
     let handleChange = (e) => {
         switch (e.target.id) {
             case "name": setInput({ ...input, username: e.target.value });
@@ -39,7 +36,6 @@ const Login = (props) => {
             }
         })
         if (userStatus === true) {
-
             loginVerification.isLogged();
             localStorage.setItem("useris", input.username);
             return "/home";
@@ -48,38 +44,37 @@ const Login = (props) => {
 
     let x = localStorage.getItem("s");
     return (
-        <div className="login">
-            <div className="login-wrap">
-                <div className="web-name">
-                    Task management system
+        <div className="main">
+            <div className="main-left"/>
+            <div className="main-right">
+            <div className="login-card ">
+                <div className="login-card-name g-center font-sami-big">
+                    Log in
                 </div>
-
-                <div>
-                    <div className="login-title">Username</div>
-                    <input className="input"
+                <div className="g-center">
+                    <input className="g-login-input"
                         type="text"
-                        placeholder="Enter your username..."
+                        placeholder="Username"
                         value={input.username}
                         onChange={handleChange}
                         id="name"
                     />
-                </div>
-                <div>
-                    <div className="login-title">Password</div>
-                    <input className="input"
-                        placeholder="Enter your password..."
+                    </div>
+                    <div className="g-center">
+                    <input className="g-login-input"
+                        type="password"
+                        placeholder="Password"
                         value={input.password}
                         onChange={handleChange}
                         id="pass"
                     />
-                </div>
-                <div className="btn-postion">
-
-                    <button className="btn-style"><Link to={verification}>Click</Link></button>
+                    </div>
+                <div className="g-center">
+                <Link to={verification}> <button className="g-btn font-small">GET STARTED</button></Link>
                 </div>
             </div>
+            </div>
         </div>
-
     );
 }
 

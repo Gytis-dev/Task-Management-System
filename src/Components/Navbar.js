@@ -100,10 +100,10 @@ const Navbar = (props) => {
                 </ul>
             </div>
             <div className="nav-1 ">
-                <h3>Logged in as: {props.name}</h3>
+                <div>Logged in as: {props.name}</div>
             </div>
 
-            <div className="createIssue" style={style}>
+            {/* <div className="createIssue" style={style}>
                 <div className="close-button" onClick={(e) => setStyle({ visibility: "hidden" })}>x</div>
                 <div className="grid-createIssue">
                     <div className="createIssue-name">Create new Issue</div>
@@ -146,7 +146,7 @@ const Navbar = (props) => {
                         <button onClick={handleSubmit}>Submit request</button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 

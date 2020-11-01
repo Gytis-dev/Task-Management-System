@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
-import loginVerification from "./loginVerification";
+import loginVerification from "./login/login-verification";
 
 
 const PrivateRoute = ({component: Component, ...rest}) => {

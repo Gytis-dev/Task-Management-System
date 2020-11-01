@@ -6,7 +6,7 @@ import Navbar from "../Components/Navbar";
 import LeftSection from "../Components/LeftSection";
 import Table from "../Components/Table";
 import TaskInfo from "../Components/TaskInfo";
-import { loginVerification, loginStatus } from "../Components/loginVerification";
+import { loginVerification, loginStatus } from "../Components/login/login-verification";
 
 
 const Home = () => {
@@ -65,7 +65,7 @@ let changeStatus = (item) => {
 
     return (
         <Router>
-            <div className="wrapper-home">
+            <div className="main">
                 <Navbar name={useris} handleFormSubmit={submit}/>
                 <LeftSection />
                 <Route path="/home" exact render={(props) => <Table {...props} addItem={task} />} />

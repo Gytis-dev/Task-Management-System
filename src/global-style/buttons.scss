@@ -1,0 +1,46 @@
+@import "../global-style/colors.scss";
+.g-login-input{
+  border: none;
+  border-radius: 35px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: $red-light;
+  width: 60%;
+  height: 35px;
+  padding: 0 15px;
+
+&:-webkit-autofill {
+-webkit-text-fill-color:  $red-light !important;
+  -webkit-box-shadow: 0 0 0px 1000px #444546 inset;
+  transition: background-color 5000s ease-in-out 0s;
+
+}
+ &:hover {
+   box-shadow: $red-light 0px 1px 2px, $red-light 0px 0px 0px 2px;
+ }
+
+
+  &::placeholder {
+    color:$red-light;
+  }
+}
+
+.g-btn {
+  background: none;
+  border: solid 2px  $red-light;
+border-radius:35px;
+  cursor: pointer;
+  height: 35px;
+  text-transform:uppercase;
+  width:130px;
+  outline:none;
+  color:  $red-light;
+a {
+  text-decoration: none !important;
+}
+&:hover{
+    color: $white-light;
+    background: $red-light;
+
+}
+}

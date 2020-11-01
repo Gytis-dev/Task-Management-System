@@ -1,11 +1,11 @@
 .createIssue {
     left: 50%;
     top: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+    /* position: absolute; */
+    /* transform: translate(-50%, -50%); */
     background-color: #fff;
-    width: 50%;
-    height: auto;
+    /* width: 50%; */
+    /* height: auto; */
     border-radius: 10px;
     box-shadow: 3px 3px 3px 3px rgba(95, 95, 95, 0.158);
 }

@@ -2,8 +2,6 @@ import React, { useState, useEffect} from "react";
 import Task from "../Components/Task";
 
 const Table = (props) => {
-
-
     return (
         <table className="table-wrap">
             <thead>
