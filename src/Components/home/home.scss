@@ -2,11 +2,11 @@
 
 .home {
   display: grid;
-  grid-template-columns: auto 1fr ;
+  grid-template-columns: auto 1fr;
   height: 100vh;
   &-grid-one {
     grid-column: 1 / 2;
-    background-color:$dark-light;
+    background-color: $dark-light;
   }
 
   &-grid-two {

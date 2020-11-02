@@ -1,53 +1,50 @@
 @import "../../global-style/colors.scss";
 
 .navbar {
-  cursor:pointer;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 1fr;
   color: $white-light;
-    grid-template-rows: 1fr;
-   height:100vh;
+  grid-template-rows: 1fr;
+  height: 100vh;
   position: relative;
-  width:150px;
-  overflow-y:auto;
+  width: 150px;
+  overflow-y: auto;
 
-&-design:before{
-  content: '';
-  width:0;
-  position:absolute;
-  padding-top:25px;
-  border-bottom:solid 2px  $red-light;
-  background: transparent;
-  transition: width .5s ease, background-color .5s ease;
-}
-&-design:hover:before {
-  width: 100%;
-}
-&-design:hover {
-  color:  $red-light;
-}
+  &-design:before {
+    content: "";
+    width: 0;
+    position: absolute;
+    padding-top: 25px;
+    border-bottom: solid 2px $red-light;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+  }
+  &-design:hover:before {
+    width: 100%;
+  }
+  &-design:hover {
+    color: $red-light;
+  }
 
-  &-icon-postion{
-    margin-right:10px;
+  &-icon-postion {
+    margin-right: 10px;
   }
   &-menu-one {
-   margin: 0  16px 0 16px;
-   display: grid;
-   grid-template-rows: 1fr 1fr 1fr 1fr auto;
-   grid-gap:44px;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+    margin: 0 16px 0 16px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr auto;
+    grid-gap: 44px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 
- a {
+  a {
     color: $white-light;
   }
-
 }
-
-
 
 .overlay-createIssue {
   background: $white-light;
@@ -58,8 +55,7 @@
   width: 100%;
   top: 0;
   left: 0;
-    z-index:1;
-
+  z-index: 1;
 }
 
 .createIssue {
@@ -70,7 +66,7 @@
   background-color: $dark;
   width: 505px;
   height: 500px;
-    z-index:1;
+  z-index: 1;
 
   border-radius: 10px;
   overflow-y: auto;
@@ -126,11 +122,11 @@
   &-body {
     overflow-y: auto;
     max-height: 300px;
-    
+
     overflow-x: hidden;
     margin-bottom: 40px;
-    display:grid;
-    grid-template-rows:1fr;
+    display: grid;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr;
   }
   &-input-label {
@@ -138,20 +134,20 @@
   }
 
   &-input-design-textarea {
-        width: 440px;
+    width: 440px;
     outline: none;
     resize: none;
     border: solid 1px $white-light;
     height: 150px;
     padding: 8px;
     color: $dark;
-  overflow:auto;
+    overflow: auto;
 
-  height:150px;
+    height: 150px;
   }
 
   &-input-design {
-        width: 440px;
+    width: 440px;
 
     padding: 8px;
     background-color: none;
@@ -159,23 +155,20 @@
     color: $dark;
     border: solid 1px $white-light;
   }
- &-input-design-option {
+  &-input-design-option {
     width: 458px !important;
-    
   }
- 
-  &-input-design  option{
-    height:200px !important;
+
+  &-input-design option {
+    height: 200px !important;
     font-size: 12px;
     font-weight: 600;
     width: 90%;
-    background:  $dark;
+    background: $dark;
     color: $red-light;
-
   }
 }
 
- 
 .error-name {
   padding: 5px 10px 10px 10px;
   color: $red-light;
