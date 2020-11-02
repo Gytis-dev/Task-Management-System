@@ -47,7 +47,7 @@
 }
 
 .overlay-createIssue {
-  background: $white-light;
+  background: #707070;
   opacity: 0.9;
   width: 100%;
   position: absolute;
@@ -138,12 +138,11 @@
     outline: none;
     resize: none;
     border: solid 1px $white-light;
-    height: 150px;
     padding: 8px;
     color: $dark;
     overflow: auto;
 
-    height: 150px;
+    height: 70px;
   }
 
   &-input-design {
