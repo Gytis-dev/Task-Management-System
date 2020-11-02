@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TaskComponent from "../Components/TaskComponent";
+import TaskComponent from "../task/task-component";
 import { Link } from "react-router-dom";
 
 

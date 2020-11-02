@@ -2,8 +2,38 @@
   font-weight:600;
   font-size:32px;
   cursor:default;
+  font-family:sans-serif;
+
+}
+.font-normal-font{
+  font-size:16px;
+  font-weight:600;
+  font-family:sans-serif;
+  cursor:default;
+}
+
+.font-normal-big{
+  font-weight:600;
+  font-size:22px;
+  cursor:default;
+  font-family:sans-serif;
+
+}
+.font-very-small{
+  font-size: 12px;
+  font-weight:600;
+  cursor:default;
+  font-family:sans-serif;
 }
 .font-small{
   font-size:14px;
   font-weight:600;
+  cursor:default;
+  font-family:sans-serif;
+}
+.font-normal{
+  font-size:16px;
+  font-weight:400;
+  font-family:sans-serif;
+  cursor:default;
 }

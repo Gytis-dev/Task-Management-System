@@ -1,5 +1,5 @@
 @import "../global-style/colors.scss";
-.g-login-input{
+.g-login-input {
   border: none;
   border-radius: 35px;
   outline: none;
@@ -9,38 +9,51 @@
   height: 35px;
   padding: 0 15px;
 
-&:-webkit-autofill {
--webkit-text-fill-color:  $red-light !important;
-  -webkit-box-shadow: 0 0 0px 1000px #444546 inset;
-  transition: background-color 5000s ease-in-out 0s;
-
-}
- &:hover {
-   box-shadow: $red-light 0px 1px 2px, $red-light 0px 0px 0px 2px;
- }
-
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $red-light !important;
+    -webkit-box-shadow: 0 0 0px 1000px $dark inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  &:hover {
+    box-shadow: $red-light 0px 1px 2px, $red-light 0px 0px 0px 2px;
+  }
 
   &::placeholder {
-    color:$red-light;
+    color: $red-light;
   }
 }
 
-.g-btn {
+.g-btn-login {
   background: none;
-  border: solid 2px  $red-light;
-border-radius:35px;
-  cursor: pointer;
+  border: solid 2px $red-light;
+  border-radius: 35px;
   height: 35px;
-  text-transform:uppercase;
-  width:130px;
-  outline:none;
-  color:  $red-light;
-a {
-  text-decoration: none !important;
-}
-&:hover{
-    color: $white-light;
-    background: $red-light;
+  text-transform: uppercase;
+  width: 130px;
+  outline: none;
+  color: $red-light;
 
+  &:hover {
+    color: $white-light;
+      cursor: pointer;
+    background: $red-light;
+  }
 }
+
+.g-btn button {
+  width: 90%;
+  border: solid 2px $red-light;
+  color: $red-light;
+  text-transform: uppercase;
+  height: 35px;
+  background-color: $dark;
+  outline: none;
+  border-radius: 35px;
+
+  &:hover {
+    background-color: $red-light;
+    color: $white;
+  cursor: pointer;
+
+  }
 }

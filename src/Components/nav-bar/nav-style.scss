@@ -1,0 +1,182 @@
+@import "../../global-style/colors.scss";
+
+.navbar {
+  cursor:pointer;
+  display: grid;
+  grid-template-columns: 1fr;
+  color: $white-light;
+    grid-template-rows: 1fr;
+   height:100vh;
+  position: relative;
+  width:150px;
+  overflow-y:auto;
+
+&-design:before{
+  content: '';
+  width:0;
+  position:absolute;
+  padding-top:25px;
+  border-bottom:solid 2px  $red-light;
+  background: transparent;
+  transition: width .5s ease, background-color .5s ease;
+}
+&-design:hover:before {
+  width: 100%;
+}
+&-design:hover {
+  color:  $red-light;
+}
+
+  &-icon-postion{
+    margin-right:10px;
+  }
+  &-menu-one {
+   margin: 0  16px 0 16px;
+   display: grid;
+   grid-template-rows: 1fr 1fr 1fr 1fr auto;
+   grid-gap:44px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  }
+
+ a {
+    color: $white-light;
+  }
+
+}
+
+
+
+.overlay-createIssue {
+  background: $white-light;
+  opacity: 0.9;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+    z-index:1;
+
+}
+
+.createIssue {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: $dark;
+  width: 505px;
+  height: 500px;
+    z-index:1;
+
+  border-radius: 10px;
+  overflow-y: auto;
+  box-shadow: 3px 3px 3px 3px rgba(95, 95, 95, 0.158);
+  &-close-button {
+    box-sizing: border-box;
+    position: absolute;
+    display: block;
+    width: 22px;
+    right: 0;
+    height: 22px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+    cursor: pointer;
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      background: $red-light;
+      transform: rotate(45deg);
+      border-radius: 5px;
+      top: 15px;
+      right: 8px;
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &-name {
+    text-transform: uppercase;
+    color: $red-light;
+    padding: 0 0 15px 0;
+  }
+
+  &-name::after {
+    content: "";
+    border-bottom: 2px solid $red-light;
+    margin-top: 14px;
+    width: 100%;
+    display: block;
+  }
+
+  &-grid-createIssue {
+    text-align: left;
+    padding: 20px 20px 20px 20px;
+  }
+
+  &-body {
+    overflow-y: auto;
+    max-height: 300px;
+    
+    overflow-x: hidden;
+    margin-bottom: 40px;
+    display:grid;
+    grid-template-rows:1fr;
+    grid-template-columns: 1fr;
+  }
+  &-input-label {
+    color: $dark;
+  }
+
+  &-input-design-textarea {
+        width: 440px;
+    outline: none;
+    resize: none;
+    border: solid 1px $white-light;
+    height: 150px;
+    padding: 8px;
+    color: $dark;
+  overflow:auto;
+
+  height:150px;
+  }
+
+  &-input-design {
+        width: 440px;
+
+    padding: 8px;
+    background-color: none;
+    outline: none;
+    color: $dark;
+    border: solid 1px $white-light;
+  }
+ &-input-design-option {
+    width: 458px !important;
+    
+  }
+ 
+  &-input-design  option{
+    height:200px !important;
+    font-size: 12px;
+    font-weight: 600;
+    width: 90%;
+    background:  $dark;
+    color: $red-light;
+
+  }
+}
+
+ 
+.error-name {
+  padding: 5px 10px 10px 10px;
+  color: $red-light;
+}

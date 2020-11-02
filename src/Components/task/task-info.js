@@ -21,7 +21,7 @@ const TaskInfo = (props) => {
 
     }
     return (
-        <div>
+        <div className="table-main-header g-center font-normal-font">
             <button onClick={() => props.history.push("/home")}>BACK</button>
             <li>{id}</li>
             <li>{name}</li>
@@ -30,7 +30,6 @@ const TaskInfo = (props) => {
             <li>{date}</li>
             <li>{state.status}</li>
             <li>{comment}</li>
-
             <button onClick = {changeStatus}>Change status</button>
         </div>
     );

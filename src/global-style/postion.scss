@@ -1,7 +1,18 @@
-.g-center{
- display: flex;
+.g-center {
+  display: flex;
   justify-content: center;
   align-items: center;
-    text-align: center;
-
+  text-align: center;
+}
+.g-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+.g-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
 }
