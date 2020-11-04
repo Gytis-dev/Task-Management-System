@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = (props) => {
+
   const [style, setStyle] = useState({ display: "none" });
 
   const [input, setInput] = useState({
@@ -44,13 +45,6 @@ const Navbar = (props) => {
       nameErr = "";
     }
 
-    if (input.reporter.length < 3) {
-      reporterErr = "Enter reporter";
-      arr.push(1);
-    } else {
-      reporterErr = "";
-    }
-
     if (input.date === "") {
       dateErr = "Enter valid date";
       arr.push(1);
@@ -80,6 +74,7 @@ const Navbar = (props) => {
   };
 
   let handleSubmit = (e) => {
+    
     let isValid = formValid();
 
     if (isValid === true) {
@@ -87,7 +82,7 @@ const Navbar = (props) => {
       let object = {
         id: 3,
         name: input.name,
-        reporter: input.reporter,
+        reporter: "",
         priority: input.priority,
         date: input.date,
         status: "Submitted",
@@ -99,7 +94,6 @@ const Navbar = (props) => {
       setStyle({ display: "none" });
       setInput({
         name: "",
-        reporter: "",
         priority: "High",
         date: "",
         status: "",
@@ -131,15 +125,18 @@ const Navbar = (props) => {
             />
             Create Issue
           </div>
+          
           <div className="navbar-design">
             <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
             User Info
           </div>
+          <Link to = "/home/myreports">
           <div className="navbar-design  ">
             {" "}
             <FontAwesomeIcon className="navbar-icon-postion" icon={faFlag} />
             My Reports
           </div>
+          </Link>
           <div onClick={() => logout()} className="navbar-design ">
             <FontAwesomeIcon
               className="navbar-icon-postion"
@@ -172,20 +169,6 @@ const Navbar = (props) => {
               />
               <div className="error-name font-very-small">
                 {error.nameError}
-              </div>
-            </div>
-            <div>
-              <input
-                className="createIssue-input-design  font-very-small"
-                type="text"
-                placeholder="Enter reporter"
-                value={input.reporter}
-                onChange={(e) => {
-                  setInput({ ...input, reporter: e.target.value });
-                }}
-              />
-              <div className="error-name font-very-small">
-                {error.reporterError}
               </div>
             </div>
             <div>

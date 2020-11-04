@@ -24,7 +24,7 @@ const TaskComponent = (props) => {
   return (
     <Link
       to={{
-        pathname: `/home/${props.prop.name}`,
+        pathname: `/home/myreports/${props.prop.name}`,
         state: {
           from: props.prop,
         },
