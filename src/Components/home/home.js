@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "../home/home.scss";
 import Navbar from "../../Components/nav-bar/nav-bar";
@@ -7,6 +7,11 @@ import TaskInfo from "../task/task-info";
 
 const Home = () => {
   let useris = localStorage.getItem("useris");
+
+  let [test, setTest] = useState({
+    name: 5,
+    pass: 0
+  });
 
   const [task, setTask] = useState([
     {
@@ -46,7 +51,7 @@ const Home = () => {
     let localStorageItems = localStorage.getItem("itemData");
     localStorageItems = JSON.parse(localStorageItems);
 
-    if (localStorageItems){
+    if (localStorageItems) {
       let reports = localStorageItems.filter(taskItem => taskItem.reporter === useris);
       setMyReports(reports);
     }
@@ -57,10 +62,10 @@ const Home = () => {
 
   }, []);
 
- let updateMyReports = () => {
-   let update = task.filter(report => report.reporter === useris);
-   setMyReports(update);
- }
+  let updateMyReports = () => {
+    let update = task.filter(report => report.reporter === useris);
+    setMyReports(update);
+  }
 
 
   // statuso pakeitimas
@@ -77,8 +82,8 @@ const Home = () => {
   let submit = (newItem) => {
     newItem.id = task.length + 1;
     newItem.reporter = useris;
+    let date = new Date();
     setTask([...task, newItem]);
-    localStorage.setItem("itemData", JSON.stringify(task));
     updateMyReports();
   };
   useEffect(() => {
@@ -86,6 +91,11 @@ const Home = () => {
     itemData = JSON.parse(itemData);
     itemData ? setTask(itemData) : setTask(task);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("itemData", JSON.stringify(task));
+    updateMyReports();
+  }, [task])
 
   return (
     <Router>
@@ -111,6 +121,7 @@ const Home = () => {
           />
         </div>
       </div>
+
     </Router>
   );
 };

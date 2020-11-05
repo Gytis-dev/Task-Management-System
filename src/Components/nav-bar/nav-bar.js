@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../nav-bar/nav-style.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../../global-style/font.scss";
 import "../../global-style/postion.scss";
 import {
@@ -74,7 +74,7 @@ const Navbar = (props) => {
   };
 
   let handleSubmit = (e) => {
-    
+
     let isValid = formValid();
 
     if (isValid === true) {
@@ -109,12 +109,12 @@ const Navbar = (props) => {
       <div className="overlay-createIssue" style={style} />
       <div className="navbar font-normal ">
         <div className="navbar-menu-one g-left">
-          <Link to="/home">
+          <NavLink exact to="/home" activeStyle={{ color: "#fe4066" }}>
             <div className="navbar-design">
               <FontAwesomeIcon className="navbar-icon-postion" icon={faHome} />
               Dashboard
             </div>
-          </Link>
+          </NavLink>
           <div
             className="navbar-design"
             onClick={() => setStyle({ display: "block" })}
@@ -125,24 +125,24 @@ const Navbar = (props) => {
             />
             Create Issue
           </div>
-          
+
           <div className="navbar-design">
             <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
             User Info
           </div>
-          <Link to = "/home/myreports">
-          <div className="navbar-design  ">
-            {" "}
-            <FontAwesomeIcon className="navbar-icon-postion" icon={faFlag} />
+          <NavLink exact to="/home/myreports" activeStyle={{ color: "#fe4066" }} >
+            <div className="navbar-design  ">
+              {" "}
+              <FontAwesomeIcon className="navbar-icon-postion" icon={faFlag} />
             My Reports
           </div>
-          </Link>
+          </NavLink>
           <div onClick={() => logout()} className="navbar-design ">
             <FontAwesomeIcon
               className="navbar-icon-postion"
               icon={faSignOutAlt}
             />
-            Login out
+            Log out
           </div>
         </div>
       </div>
