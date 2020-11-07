@@ -8,11 +8,6 @@ import TaskInfo from "../task/task-info";
 const Home = () => {
   let useris = localStorage.getItem("useris");
 
-  let [test, setTest] = useState({
-    name: 5,
-    pass: 0
-  });
-
   const [task, setTask] = useState([
     {
       id: 1,

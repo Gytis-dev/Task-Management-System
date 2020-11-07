@@ -30,11 +30,16 @@ const TaskInfo = (props) => {
 
   
   const [val, setVal] = useState("");
-
   let addComment = (e) => {
+
+    if (val){
       props.comment(state.id, val);
       alert("Comment submitted");
       window.location.href = `/home`;
+    }
+    else {
+      alert ("Please enter a valid comment");
+    }  
   }
 
   return (
@@ -53,9 +58,12 @@ const TaskInfo = (props) => {
       <input type = "text" value = {val} onChange = {(e) => setVal(e.target.value)}/>
       <button onClick = {addComment}>Add comment</button>
 
+      <div className = "commentai">
+
       {koment.map(k => {
         return  <li key = {k}>{k}</li>
       })}
+      </div>
 
 
 
