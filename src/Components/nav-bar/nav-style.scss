@@ -64,10 +64,9 @@
   position: absolute;
   transform: translate(-50%, -50%);
   background-color: $dark;
-  width: 505px;
-  height: 500px;
+  width: 500px;
+  height: auto;
   z-index: 1;
-
   border-radius: 10px;
   overflow-y: auto;
   box-shadow: 3px 3px 3px 3px rgba(95, 95, 95, 0.158);
@@ -121,11 +120,9 @@
 
   &-body {
     overflow-y: auto;
-    max-height: 300px;
-
     overflow-x: hidden;
-    margin-bottom: 40px;
     display: grid;
+    margin-bottom: 22px;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
   }
@@ -141,13 +138,14 @@
     padding: 8px;
     color: $dark;
     overflow: auto;
-
     height: 70px;
   }
 
+  &-input-button-postion {
+    margin-right: 22px;
+  }
   &-input-design {
     width: 440px;
-
     padding: 8px;
     background-color: none;
     outline: none;
