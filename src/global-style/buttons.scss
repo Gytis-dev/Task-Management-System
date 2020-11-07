@@ -39,20 +39,22 @@
     background: $red-light;
   }
 }
+.g-btn-actyve  {
+  width: 140px;
+  border: solid 2px $red-light;
+  height: 35px;
+  outline: none;
+  background-color: $red-light;
+  color: $white;
+  cursor: pointer !important;
+}
 
-.g-btn button {
-  width: 90%;
+.g-btn  {
+  width: 140px;
   border: solid 2px $red-light;
   color: $red-light;
-  text-transform: uppercase;
   height: 35px;
   background-color: $dark;
   outline: none;
-  border-radius: 35px;
-
-  &:hover {
-    background-color: $red-light;
-    color: $white;
-    cursor: pointer;
-  }
+  cursor: pointer !important;
 }

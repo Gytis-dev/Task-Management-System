@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = (props) => {
-
   const [style, setStyle] = useState({ display: "none" });
 
   const [input, setInput] = useState({
@@ -74,7 +73,6 @@ const Navbar = (props) => {
   };
 
   let handleSubmit = (e) => {
-
     let isValid = formValid();
 
     if (isValid === true) {
@@ -131,12 +129,16 @@ const Navbar = (props) => {
             <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
             User Info
           </div>
-          <NavLink exact to="/home/myreports" activeStyle={{ color: "#fe4066" }} >
+          <NavLink
+            exact
+            to="/home/myreports"
+            activeStyle={{ color: "#fe4066" }}
+          >
             <div className="navbar-design  ">
               {" "}
               <FontAwesomeIcon className="navbar-icon-postion" icon={faFlag} />
-            My Reports
-          </div>
+              My Reports
+            </div>
           </NavLink>
           <div onClick={() => logout()} className="navbar-design ">
             <FontAwesomeIcon
@@ -147,12 +149,11 @@ const Navbar = (props) => {
           </div>
         </div>
       </div>
-
       <div className="createIssue" style={style}>
         <div
           className="createIssue-close-button"
           onClick={(e) => setStyle({ display: "none" })}
-        ></div>
+        />
         <div className="createIssue-grid-createIssue">
           <div className="createIssue-name font-normal-big">
             Create new Issue
@@ -215,10 +216,17 @@ const Navbar = (props) => {
               </div>
             </div>
           </div>
-          <div className="g-btn g-center">
-            <button className="font-normal-font" onClick={handleSubmit}>
-              Submit request
-            </button>
+          <div className="g-right">
+            <div
+              className="font-normal-font g-btn g-center createIssue-input-button-postion  "
+              onClick={() => setStyle({ display: "none" })}>
+              Cancel
+            </div>
+            <div
+              className="font-normal-font g-btn-actyve g-center"
+              onClick={handleSubmit}>
+              Submit
+            </div>
           </div>
         </div>
       </div>
