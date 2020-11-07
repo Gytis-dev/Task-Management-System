@@ -1,4 +1,5 @@
-import React, { useEffect, Component, useState } from "react";
+import React, { useEffect, Component, useState, useHistory } from "react";
+
 
 const TaskInfo = (props) => {
   let {
@@ -9,6 +10,7 @@ const TaskInfo = (props) => {
     date,
     status,
     comment,
+    koment
   } = props.location.state.from;
 
   const [state, setState] = useState({
@@ -25,8 +27,19 @@ const TaskInfo = (props) => {
     setState({ status: "Approved" });
     props.change(state);
   };
+
+  
+  const [val, setVal] = useState("");
+
+  let addComment = (e) => {
+      props.comment(state.id, val);
+      alert("Comment submitted");
+      window.location.href = `/home`;
+  }
+
   return (
     <div className="table-main-header g-center font-normal-font">
+
       <button onClick={() => props.history.push("/home")}>BACK</button>
       <li>{id}</li>
       <li>{name}</li>
@@ -36,6 +49,16 @@ const TaskInfo = (props) => {
       <li>{state.status}</li>
       <li>{comment}</li>
       <button onClick={changeStatus}>Change status</button>
+
+      <input type = "text" value = {val} onChange = {(e) => setVal(e.target.value)}/>
+      <button onClick = {addComment}>Add comment</button>
+
+      {koment.map(k => {
+        return  <li key = {k}>{k}</li>
+      })}
+
+
+
     </div>
   );
 };

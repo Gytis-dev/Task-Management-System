@@ -87,6 +87,7 @@ const Navbar = (props) => {
         date: input.date,
         status: "Submitted",
         comment: input.comment,
+        koment: []
       };
 
       props.handleFormSubmit(object);

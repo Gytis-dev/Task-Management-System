@@ -22,6 +22,7 @@ const Home = () => {
       date: "2020-10-06",
       status: "Submitted",
       comment: "comment 1",
+      koment: []
     },
     {
       id: 2,
@@ -31,6 +32,7 @@ const Home = () => {
       date: "2020-10-04",
       status: "Submitted",
       comment: "comment 2",
+      koment: []
     },
     {
       id: 3,
@@ -40,6 +42,7 @@ const Home = () => {
       date: "2020-10-02",
       status: "Submitted",
       comment: "comment 3",
+      koment: []
     },
   ]);
 
@@ -97,6 +100,17 @@ const Home = () => {
     updateMyReports();
   }, [task])
 
+
+let cmt = (id,value) => {
+  task.map(tsk => {
+    if (id === tsk.id){
+     tsk.koment.push(value);
+     localStorage.setItem("itemData", JSON.stringify(task));
+    }
+  })
+  
+}
+
   return (
     <Router>
       <div className="home">
@@ -117,7 +131,7 @@ const Home = () => {
           <Route
             path="/home/myreports/:id"
             exact
-            render={(props) => <TaskInfo {...props} change={changeStatus} />}
+            render={(props) => <TaskInfo  {...props} change={changeStatus} comment = {cmt}/>}
           />
         </div>
       </div>
