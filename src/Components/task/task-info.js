@@ -22,6 +22,7 @@ const TaskInfo = (props) => {
     comment: comment,
   });
 
+
   let changeStatus = () => {
     alert("Mark this task as complete? Press Yes");
     setState({ status: "Approved" });
@@ -30,8 +31,12 @@ const TaskInfo = (props) => {
 
   
   const [val, setVal] = useState("");
+
+
   let addComment = (e) => {
 
+
+    console.log(state);
     if (val){
       props.comment(state.id, val);
       alert("Comment submitted");
@@ -40,6 +45,8 @@ const TaskInfo = (props) => {
     else {
       alert ("Please enter a valid comment");
     }  
+
+
   }
 
   return (
