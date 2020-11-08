@@ -61,8 +61,7 @@ const TaskInfo = (props) => {
         <div className=" g-left">
           <div
             className="font-normal-font  task-info-title-status"
-            onClick={changeStatus}
-          >
+            onClick={changeStatus}>
             <div>Status: {state.status}</div>
             <div className="task-info-title-status-edit">
               <FontAwesomeIcon icon={faEdit} />
@@ -72,21 +71,18 @@ const TaskInfo = (props) => {
         <div className="font-normal-font g-left task-info-title-comment ">
           Comment
         </div>
-        <div className="g-left task-info-comment ">
+        <div className="g-left task-info-comment">
           <textarea
             className="task-info-comment-style"
             type="text"
             value={val}
-            onChange={(e) => setVal(e.target.value)}
-          />
+            onChange={(e) => setVal(e.target.value)}/>
           <button className="g-btn-actyve " onClick={addComment}>
             Add comment
           </button>
         </div>
         <div className="g-left task-info-comment-text">
-          {koment.map((k) => {
-            return <div key={k}> {k} </div>;
-          })}
+          {koment.map((k) => { return <div key={k}> {k} </div>; })}
         </div>
       </div>
     </div>
