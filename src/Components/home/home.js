@@ -96,18 +96,16 @@ const Home = () => {
   }, [task])
 
 
-let cmt = (id,value) => {
-  task.map(tsk => {
-    if (id === tsk.id){
-     tsk.koment.push(value);
-     localStorage.setItem("itemData", JSON.stringify(task));
-    }
-  })
-  
-}
-
+  let cmt = (id, value) => {
+    task.map(tsk => {
+      if (id === tsk.id) {
+        tsk.koment.push(value);
+        localStorage.setItem("itemData", JSON.stringify(task));
+      }
+    })
+  }
   return (
-    
+
     <Router>
       <div className="home">
         <div className="home-grid-one">
@@ -115,7 +113,7 @@ let cmt = (id,value) => {
         </div>
         <div className="home-grid-two">
           <Route
-          
+
             path="/home"
             exact
             render={(props) => <Table {...props} addItem={task} />}
@@ -125,15 +123,15 @@ let cmt = (id,value) => {
             exact
             render={(props) => <Table {...props} addItem={myReports} />}
           />
-
           <Route
             path="/home/myreports/:id"
             exact
-            render={(props) => <TaskInfo  {...props} change={changeStatus} comment = {cmt}/>}
+            render={(props) => <TaskInfo  {...props} change={changeStatus} comment={cmt} />}
           />
         </div>
       </div>
     </Router>
+
   );
 };
 

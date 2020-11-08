@@ -40,6 +40,8 @@
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }
 }
+
+
 .task-info{
   display: grid;
   grid-template-columns: 1fr ;
@@ -89,22 +91,37 @@
       width: 440px ;
       resize: none;
       font-size: 14px;
-      
-
     }
     &-text{
       margin-top:16px;
-      padding:5px;
+      display:block;
+      list-style: none;
       overflow-y: auto;
       outline: none;
       max-height: 400px;
       width: 100% ;
       word-break: break-all;
       font-size: 14px;
-      color: $white-light;
-      border:solid 2px $red-light;
+      color: $dark;
     }
+    &-text li {
+      display:flex;
+      flex-direction: column;
+      margin:10px;
+      padding:10px;
+      width:40%;
+      background:rgb(233, 230, 230);
+      border-radius:10px;
+      font-size:10px;
+      
+    }
+    &-text li:hover {
+      cursor:pointer;
+      background:rgb(233, 230, 210);
+    }
+    
   }
 }
+
 
 

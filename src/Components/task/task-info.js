@@ -1,7 +1,12 @@
-import React, { useEffect, Component, useState, useHistory } from "react";
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 
 const TaskInfo = (props) => {
+
+  let user = localStorage.getItem("useris");
+
   let {
     id,
     name,
@@ -10,7 +15,7 @@ const TaskInfo = (props) => {
     date,
     status,
     comment,
-    koment
+    koment,
   } = props.location.state.from;
 
   const [state, setState] = useState({
@@ -22,99 +27,93 @@ const TaskInfo = (props) => {
     comment: comment,
   });
 
+  const [com, setCom] = useState([]);
+
+
+
   let changeStatus = () => {
+    if (state.status === "Approved"){
+      return;
+    }
+
     alert("Mark this task as complete? Press Yes");
     setState({ status: "Approved" });
     props.change(state);
+ 
   };
 
-  
   const [val, setVal] = useState("");
-  let addComment = (e) => {
-
-    if (val){
+  let addComment = () => {
+    if (val) {
       props.comment(state.id, val);
-      alert("Comment submitted");
-      window.location.href = `/home`;
+      setCom([koment]);
+    } else {
+      alert("Please enter a valid comment");
     }
-    else {
-      alert ("Please enter a valid comment");
-    }  
-  }
+    setVal("");
+  };
+
+  useEffect(() => {
+    console.log("renderiok");
+    console.log(val);
+  },[state]);
 
   return (
-<<<<<<< HEAD
-    <div className="table-main-header g-center font-normal-font">
-
-      <button onClick={() => props.history.push("/home")}>BACK</button>
-      <li>{id}</li>
-      <li>{name}</li>
-      <li>{reporter}</li>
-      <li>{priority}</li>
-      <li>{date}</li>
-      <li>{state.status}</li>
-      <li>{comment}</li>
-      <button onClick={changeStatus}>Change status</button>
-
-      <input type = "text" value = {val} onChange = {(e) => setVal(e.target.value)}/>
-      <button onClick = {addComment}>Add comment</button>
-
-      <div className = "commentai">
-
-      {koment.map(k => {
-        return  <li key = {k}>{k}</li>
-      })}
-      </div>
-
-
-
-=======
     <div className="task-info g-center font-normal-font">
       <div>
         <div
-          className="task-info-back-button g-left  font-normal-font"
+          className="task-info-back-button g-left font-normal-font"
           onClick={() => props.history.push("/home")}
         >
           Back
-        </div>
-        <div className="font-sami-big g-left task-info-title "> {name}</div>
+</div>
+
+  <div className="font-sami-big g-left task-info-title "> {id+" - "}{name}</div>
+ 
         <div className="font-normal-font g-left task-info-title ">
-          Reporter: {reporter}
+          Reporter: <small style = {{fontWeight:"lighter", marginLeft:"5px"}}>{reporter}</small>
         </div>
         <div className="font-normal-font g-left task-info-title ">
-          Priority: {priority}
+          Priority: <small style = {{fontWeight:"lighter", marginLeft:"5px"}}>{priority}</small>
         </div>
         <div className="font-normal-font g-left task-info-title ">
-          Date: {date}
+          Date: <small style = {{fontWeight:"lighter", marginLeft:"5px"}}>{date}</small>
         </div>
         <div className=" g-left">
           <div
-            className="font-normal-font  task-info-title-status"
+            className="font-normal-font task-info-title-status"
             onClick={changeStatus}>
-            <div>Status: {state.status}</div>
+            <div>Status: <small style = {{fontWeight:"lighter", marginLeft:"5px"}} style ={status === "Submitted" ? {color:"rgb(255, 199, 44)"} : {color:"rgb(3, 192, 60)"}}>{status}</small></div>
             <div className="task-info-title-status-edit">
               <FontAwesomeIcon icon={faEdit} />
             </div>
           </div>
         </div>
+
+        <div className="font-normal-font g-left task-info-title ">
+          Description: <small style = {{fontWeight:"lighter", marginLeft:"5px"}}>{comment}</small>
+        </div>
+
+        
         <div className="font-normal-font g-left task-info-title-comment ">
           Comment
-        </div>
+</div>
         <div className="g-left task-info-comment">
           <textarea
+            disabled = {state.status === "Approved" && true}
             className="task-info-comment-style"
             type="text"
             value={val}
-            onChange={(e) => setVal(e.target.value)}/>
-          <button className="g-btn-actyve " onClick={addComment}>
+            onChange={(e) => setVal(e.target.value)} />
+          <button className="g-btn-actyve " onClick={addComment} disabled = {state.status === "Approved" && true}>
             Add comment
-          </button>
+</button>
         </div>
         <div className="g-left task-info-comment-text">
-          {koment.map((k) => { return <div key={k}> {k} </div>; })}
+         <h3 style ={{color:"white"}}>Comment's ({koment.length})</h3>
+  {koment.map((k) => { return <li key={id+=1}>{k}</li>; })}
         </div>
       </div>
->>>>>>> 6dd314a86a1107ccbb3c4bacb9f29b6e9223295e
     </div>
   );
 };
