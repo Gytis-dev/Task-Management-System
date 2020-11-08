@@ -43,8 +43,7 @@ const TaskComponent = (props) => {
               props.prop.status == "Approved"
                 ? buttonApproved
                 : buttonStyleRegular
-            }
-          >
+            }>
             {" "}
             {props.prop.status}
           </div>
