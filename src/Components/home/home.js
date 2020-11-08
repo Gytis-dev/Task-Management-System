@@ -107,6 +107,7 @@ let cmt = (id,value) => {
 }
 
   return (
+    
     <Router>
       <div className="home">
         <div className="home-grid-one">
@@ -114,6 +115,7 @@ let cmt = (id,value) => {
         </div>
         <div className="home-grid-two">
           <Route
+          
             path="/home"
             exact
             render={(props) => <Table {...props} addItem={task} />}
@@ -123,6 +125,7 @@ let cmt = (id,value) => {
             exact
             render={(props) => <Table {...props} addItem={myReports} />}
           />
+
           <Route
             path="/home/myreports/:id"
             exact
@@ -130,7 +133,6 @@ let cmt = (id,value) => {
           />
         </div>
       </div>
-
     </Router>
   );
 };

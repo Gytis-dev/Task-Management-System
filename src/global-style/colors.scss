@@ -2,5 +2,21 @@ $red-light: #fe4066;
 $white-light: #dddddd;
 $dark-light: #232426;
 $dark: #444546;
+$black: #000000;
 $white: #ffffff;
 
+.dark-light {
+  color: $dark-light;
+}
+.black {
+  color: $black;
+}
+.white-light {
+  color: $white-light;
+}
+.dark {
+  color: $dark;
+}
+.red-light {
+  color: $red-light;
+}
