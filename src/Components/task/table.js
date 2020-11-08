@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {} from "react";
 import Task from "../../Components/task/task";
 import "../task/task-style.scss";
 import "../../global-style/postion.scss";

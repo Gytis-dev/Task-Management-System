@@ -1,9 +1,12 @@
+@import "./global-style/colors.scss";
+
 html,
 body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: $dark-light;
 }
 
 ul,
@@ -28,7 +31,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fe4066;
+  background: $red-light;
   border-radius: 10px;
   cursor: pointer;
 }

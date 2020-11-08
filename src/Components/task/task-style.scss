@@ -40,10 +40,71 @@
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }
 }
+.task-info{
+  display: grid;
+  grid-template-columns: 1fr ;
+  padding: 24px;
 
-.commentai {
-  background:red;
-  position:absolute;
-  top:800px;
-  left:200px;
+  &-back-button{
+    cursor: pointer;
+    color: $white-light;
+    padding-bottom: 22px;
+  }
+  &-back-button:hover{
+    color: $red-light;
+  }
+  
+  &-back-button::before{
+    padding-right:5px ;
+    content: '<';
+  }
+  &-title{
+    padding-top:16px ;
+    color: $white-light;
+  }
+  &-title-status{
+    padding-top:16px ;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: $white-light;
+    cursor: pointer;
+    &:hover{
+      color: $red-light;
+    }
+    &-edit{
+      padding-left:10px;
+    }
+  }
+  &-title-comment{
+    grid-column: 2;
+    color: $white-light;
+    padding-top: 16px;
+
+  }
+  &-comment{
+    &-style{
+      overflow-y: auto;
+      outline: none;
+      max-height: 30px;
+      width: 440px ;
+      resize: none;
+      font-size: 14px;
+      
+
+    }
+    &-text{
+      margin-top:16px;
+      padding:5px;
+      overflow-y: auto;
+      outline: none;
+      max-height: 400px;
+      width: 100% ;
+      word-break: break-all;
+      font-size: 14px;
+      color: $white-light;
+      border:solid 2px $red-light;
+    }
+  }
 }
+
+
