@@ -5,6 +5,7 @@ import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
 
 const Table = (props) => {
+  
   return (
     <div className="table-main">
       <div className="table-main-header g-left font-normal-font">
@@ -20,6 +21,7 @@ const Table = (props) => {
       </div>
       <div className="table-main-footer "></div>
     </div>
+    
   );
 };
 export default Table;

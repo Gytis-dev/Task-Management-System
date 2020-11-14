@@ -8,8 +8,10 @@
   grid-template-rows: 1fr;
   height: 100vh;
   position: relative;
-  width: 150px;
+  width: 250px;
   overflow-y: auto;
+  
+
 
   &-design:before {
     content: "";

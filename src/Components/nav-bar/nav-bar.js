@@ -9,6 +9,7 @@ import {
   faUser,
   faFlag,
   faSignOutAlt,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = (props) => {
@@ -103,6 +104,18 @@ const Navbar = (props) => {
   function logout() {
     window.location.href = "/";
   }
+
+  const [searchValue, setSearchValue] = useState("");
+
+  let performSearch = (e) => {
+    setSearchValue(e.target.value);
+    props.search(searchValue);
+  }
+
+
+ 
+
+
   return (
     <div className="parent">
       <div className="overlay-createIssue" style={style} />
@@ -147,6 +160,27 @@ const Navbar = (props) => {
             />
             Log out
           </div>
+        
+
+
+          <div className = "searchbar"> 
+          <Link to = "/home/search"> <FontAwesomeIcon className = "navbar-icon-postion" icon = {faSearch}/> </Link>
+          <input 
+            type = "text"
+            placeholder = "Search by Task name..."
+            value = {searchValue}
+            id = "search"
+            onChange = {(e) => {performSearch(e)}}
+          
+
+            />
+          </div>
+
+
+
+
+
+
         </div>
       </div>
       <div className="createIssue" style={style}>

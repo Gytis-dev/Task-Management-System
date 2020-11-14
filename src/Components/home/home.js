@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, useHistory, Redirect } from "react-router-dom";
 import "../home/home.scss";
 import Navbar from "../../Components/nav-bar/nav-bar";
 import Table from "../task/table";
 import TaskInfo from "../task/task-info";
+
 
 
 const Home = () => {
@@ -106,13 +107,20 @@ const Home = () => {
 
 
 
+const [searchValue, setSearchValue] = useState([]);
+ let performSearch = (value) => {
+    task.filter((item) => {
+      if (item.name[0] === value[0] && item.name[1] === value[1] && item.name[2] === value[2]){
+        setSearchValue([item]);
+      }
+    })
+ }
+
   return (
     <Router>
-    
-
       <div className="home">
         <div className="home-grid-one">
-          <Navbar name={useris} handleFormSubmit={submit} />
+          <Navbar name={useris} handleFormSubmit={submit} search = {performSearch}/>
         </div>
         <div className="home-grid-two">
           <Route
@@ -131,6 +139,19 @@ const Home = () => {
             exact
             render={(props) => <TaskInfo  {...props} change={changeStatus} comment={cmt} />}
           />
+          <Route path = "/home/search"
+          exact
+          render = {(props) => 
+          searchValue ? (<Table {...props} addItem = {searchValue} />) : (
+            <Redirect to = "/home"/>
+          )
+        }
+        
+        
+        
+        
+        
+        />
           
         </div>
       </div>
