@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../home/home.scss";
 import Navbar from "../../Components/nav-bar/nav-bar";
 import Table from "../task/table";
 import TaskInfo from "../task/task-info";
+
 
 const Home = () => {
   let useris = localStorage.getItem("useris");
@@ -64,8 +65,6 @@ const Home = () => {
     let update = task.filter(report => report.reporter === useris);
     setMyReports(update);
   }
-
-
   // statuso pakeitimas
   let changeStatus = (item) => {
     task.map((taskas) => {
@@ -104,9 +103,13 @@ const Home = () => {
       }
     })
   }
-  return (
 
+
+
+  return (
     <Router>
+    
+
       <div className="home">
         <div className="home-grid-one">
           <Navbar name={useris} handleFormSubmit={submit} />
@@ -128,6 +131,7 @@ const Home = () => {
             exact
             render={(props) => <TaskInfo  {...props} change={changeStatus} comment={cmt} />}
           />
+          
         </div>
       </div>
     </Router>
