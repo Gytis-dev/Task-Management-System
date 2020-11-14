@@ -48,7 +48,20 @@
   color: $white;
   cursor: pointer !important;
 }
-
+.g-btn-comment{
+  width: 140px;
+  border: solid 2px $red-light;
+  color: $red-light;
+  height: 35px;
+  background-color: $dark;
+  outline: none;
+  text-align: center;
+ &:hover{
+  color: $white-light;
+  cursor: pointer;
+  background: $red-light;
+ }
+}
 .g-btn  {
   width: 140px;
   border: solid 2px $red-light;

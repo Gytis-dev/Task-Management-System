@@ -41,87 +41,115 @@
   }
 }
 
-
-.task-info{
+.task-info {
+  grid-template-rows: 1fr;
+  height: 100%;
   display: grid;
-  grid-template-columns: 1fr ;
-  padding: 24px;
-
-  &-back-button{
+  grid-template-columns: 1fr 30%;
+  overflow: hidden;
+  &-back-button {
     cursor: pointer;
     color: $white-light;
     padding-bottom: 22px;
   }
-  &-back-button:hover{
+  &-back-button:hover {
     color: $red-light;
   }
-  
-  &-back-button::before{
-    padding-right:5px ;
-    content: '<';
+
+  &-back-button::before {
+    padding-right: 5px;
+    content: "<";
   }
-  &-title{
-    padding-top:16px ;
+
+  &-title-name {
+    padding: 16px 0 16px 0;
     color: $white-light;
   }
-  &-title-status{
-    padding-top:16px ;
+
+  &-body-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    color: $white-light;
-    cursor: pointer;
-    &:hover{
-      color: $red-light;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    &-title {
+      padding: 8px 0;
+      color: $white-light;
+      font-weight: 200;
+      font-size: 14px;
     }
-    &-edit{
-      padding-left:10px;
+
+    &-title-status {
+      padding: 8px 0;
+      font-weight: 200;
+      display: grid;
+      font-size: 14px;
+      grid-template-columns: 1fr auto auto;
+      color: $white-light;
+      cursor: pointer;
+
+      &-edit {
+        padding-left: 10px;
+      }
     }
-  }
-  &-title-comment{
-    grid-column: 2;
-    color: $white-light;
-    padding-top: 16px;
+
+    &-descripsion {
+      margin-left: 5px;
+      font-weight: 600;
+    }
+
 
   }
-  &-comment{
-    &-style{
+&-hr{
+  margin-top:22px;
+  
+}
+  &-title-comment {
+    color: $white-light;
+    padding: 16px 0 22px 0;
+  }
+
+  &-comment {
+    &-style {
       overflow-y: auto;
       outline: none;
-      max-height: 30px;
-      width: 440px ;
+      height: 140px;
+      width: 100%;
       resize: none;
       font-size: 14px;
     }
-    &-text{
-      margin-top:16px;
-      display:block;
+    &-text {
+      display: block;
       list-style: none;
       overflow-y: auto;
+      overflow-x: hidden;
       outline: none;
-      max-height: 400px;
-      width: 100% ;
+      width: 100%;
       word-break: break-all;
-      font-size: 14px;
       color: $dark;
     }
+
     &-text li {
-      display:flex;
+      display: flex;
       flex-direction: column;
-      margin:10px;
-      padding:10px;
-      width:40%;
-      background:rgb(233, 230, 230);
-      border-radius:10px;
-      font-size:10px;
-      
+      margin: 10px;
+      padding: 10px;
+      width: 100%;
+      background: $white-light;
+      font-size: 10px;
+      word-break: break-all;
     }
-    &-text li:hover {
-      cursor:pointer;
-      background:rgb(233, 230, 210);
-    }
-    
+  }
+  &-button-postion {
+    margin-top: 16px;
+  }
+  &-right-menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 24px;
+    background-color: $dark-light;
+  }
+  &-left-menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 24px;
   }
 }
-
-
-
