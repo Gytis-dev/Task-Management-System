@@ -109,8 +109,9 @@ const Navbar = (props) => {
 
   let performSearch = (e) => {
     setSearchValue(e.target.value);
-    props.search(searchValue);
+    props.search(e.target.value);
   }
+
 
 
  

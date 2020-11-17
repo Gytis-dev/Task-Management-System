@@ -54,6 +54,7 @@ const Home = () => {
     if (localStorageItems) {
       let reports = localStorageItems.filter(taskItem => taskItem.reporter === useris);
       setMyReports(reports);
+
     }
     else {
       let taskReports = task.filter(item => item.reporter === useris);
@@ -72,6 +73,7 @@ const Home = () => {
       if (taskas.id === item.id) {
         taskas.status = "Approved";
         localStorage.setItem("itemData", JSON.stringify(task));
+
       }
     });
     updateMyReports();
@@ -87,6 +89,7 @@ const Home = () => {
   useEffect(() => {
     let itemData = localStorage.getItem("itemData");
     itemData = JSON.parse(itemData);
+
     itemData ? setTask(itemData) : setTask(task);
   }, []);
 
@@ -107,20 +110,29 @@ const Home = () => {
 
 
 
-const [searchValue, setSearchValue] = useState([]);
- let performSearch = (value) => {
-    task.filter((item) => {
-      if (item.name[0] === value[0] && item.name[1] === value[1] && item.name[2] === value[2]){
-        setSearchValue([item]);
-      }
-    })
- }
+  const [searchValue, setSearchValue] = useState([]);
+
+
+
+  let performSearch = (value) => {
+
+    let newArr = task.filter(item => item.name.toLowerCase().includes(value));
+
+    if (value != "") {
+      setSearchValue(newArr);
+    }
+    else {
+      setSearchValue([]);
+    }
+  }
+
+
 
   return (
     <Router>
       <div className="home">
         <div className="home-grid-one">
-          <Navbar name={useris} handleFormSubmit={submit} search = {performSearch}/>
+          <Navbar name={useris} handleFormSubmit={submit} search={performSearch} />
         </div>
         <div className="home-grid-two">
           <Route
@@ -139,20 +151,15 @@ const [searchValue, setSearchValue] = useState([]);
             exact
             render={(props) => <TaskInfo  {...props} change={changeStatus} comment={cmt} />}
           />
-          <Route path = "/home/search"
-          exact
-          render = {(props) => 
-          searchValue ? (<Table {...props} addItem = {searchValue} />) : (
-            <Redirect to = "/home"/>
-          )
-        }
-        
-        
-        
-        
-        
-        />
-          
+          <Route path="/home/search"
+            exact
+            render={(props) =>
+              searchValue ? (<Table {...props} addItem={searchValue} />) : (
+                <Redirect to="/home" />
+              )
+            }
+          />
+
         </div>
       </div>
     </Router>
