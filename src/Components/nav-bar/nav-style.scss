@@ -10,8 +10,17 @@
   position: relative;
   width: 250px;
   overflow-y: auto;
-  
+  &-search-style{
+    outline: none;
+    background-color: $dark;
+    color: $white-light;
 
+    font-weight: 600;
+  }
+  &-search-icon:hover{
+    filter: drop-shadow(16px 16px 20px red) invert(75%);
+
+  }
 
   &-design:before {
     content: "";

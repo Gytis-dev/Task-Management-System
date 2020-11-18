@@ -9,7 +9,7 @@ import {
   faUser,
   faFlag,
   faSignOutAlt,
-  faSearch
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = (props) => {
@@ -86,7 +86,7 @@ const Navbar = (props) => {
         date: input.date,
         status: "Submitted",
         comment: input.comment,
-        koment: []
+        koment: [],
       };
 
       props.handleFormSubmit(object);
@@ -110,12 +110,7 @@ const Navbar = (props) => {
   let performSearch = (e) => {
     setSearchValue(e.target.value);
     props.search(e.target.value);
-  }
-
-
-
- 
-
+  };
 
   return (
     <div className="parent">
@@ -161,27 +156,26 @@ const Navbar = (props) => {
             />
             Log out
           </div>
-        
 
-
-          <div className = "searchbar"> 
-          <Link to = "/home/search"> <FontAwesomeIcon className = "navbar-icon-postion" icon = {faSearch}/> </Link>
-          <input 
-            type = "text"
-            placeholder = "Search by Task name..."
-            value = {searchValue}
-            id = "search"
-            onChange = {(e) => {performSearch(e)}}
-          
-
+          <div className="searchbar">
+            <Link to="/home/search">
+              {" "}
+              <FontAwesomeIcon
+                className="navbar-icon-postion navbar-search-icon"
+                icon={faSearch}
+              />{" "}
+            </Link>
+            <input
+               className="navbar-search-style"
+              type="text"
+              placeholder="Search by Task name..."
+              value={searchValue}
+              id="search"
+              onChange={(e) => {
+                performSearch(e);
+              }}
             />
           </div>
-
-
-
-
-
-
         </div>
       </div>
       <div className="createIssue" style={style}>
@@ -254,12 +248,14 @@ const Navbar = (props) => {
           <div className="g-right">
             <div
               className="font-normal-font g-btn g-center createIssue-input-button-postion  "
-              onClick={() => setStyle({ display: "none" })}>
+              onClick={() => setStyle({ display: "none" })}
+            >
               Cancel
             </div>
             <div
               className="font-normal-font g-btn-actyve g-center"
-              onClick={handleSubmit}>
+              onClick={handleSubmit}
+            >
               Submit
             </div>
           </div>
