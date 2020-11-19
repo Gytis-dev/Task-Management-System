@@ -1,5 +1,6 @@
 import React, {} from "react";
 import TaskComponent from "../task/task-component";
+import "../task/task-style.scss";
 
 const Task = (props) => {
 
@@ -10,8 +11,8 @@ if (props.property.length > 0){
 }
 else {
   return (
-    <div>
-      <h1 style = {{color:"white", textAlign:"center"}}>Sorry, no tasks found according to your search criteria</h1>
+    <div className="task-text-not-found">
+      <div className="task-text-not-found-postion  font-sami-big white-light  ">Sorry, no tasks found according to your search criteria</div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import "../../global-style/font.scss";
 const TaskComponent = (props) => {
   let buttonApproved = {
     background: "transparent",
-    border: "3px solid #03c03c",
+    border: "2px solid #03c03c",
     textAlign: "center",
     borderRadius: "20px",
     padding: "5px",
@@ -16,7 +16,7 @@ const TaskComponent = (props) => {
 
   let buttonStyleRegular = {
     background: "transparent",
-    border: "3px solid #FFC72C",
+    border: "2px solid #FFC72C",
     textAlign: "center",
     borderRadius: "20px",
     padding: "5px",
