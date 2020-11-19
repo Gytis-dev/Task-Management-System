@@ -9,9 +9,11 @@ import {
   faUser,
   faFlag,
   faSignOutAlt,
-  faSearch
+  faSearch,
+
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Navbar = (props) => {
   const [style, setStyle] = useState({ display: "none" });
 
@@ -114,12 +116,11 @@ const Navbar = (props) => {
 
 
 
- 
-
-
   return (
     <div className="parent">
       <div className="overlay-createIssue" style={style} />
+
+
       <div className="navbar font-normal ">
         <div className="navbar-menu-one g-left">
           <NavLink exact to="/home" activeStyle={{ color: "#fe4066" }}>
@@ -127,6 +128,12 @@ const Navbar = (props) => {
               <FontAwesomeIcon className="navbar-icon-postion" icon={faHome} />
               Dashboard
             </div>
+          </NavLink>
+          <NavLink to ="/home/userinformation">
+          <div className="navbar-design">
+            <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
+            About
+          </div>
           </NavLink>
           <div
             className="navbar-design"
@@ -138,11 +145,7 @@ const Navbar = (props) => {
             />
             Create Issue
           </div>
-
-          <div className="navbar-design">
-            <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
-            User Info
-          </div>
+        
           <NavLink
             exact
             to="/home/myreports"
@@ -161,18 +164,18 @@ const Navbar = (props) => {
             />
             Log out
           </div>
-        
 
 
-          <div className = "searchbar"> 
-          <Link to = "/home/search"> <FontAwesomeIcon className = "navbar-icon-postion" icon = {faSearch}/> </Link>
-          <input 
-            type = "text"
-            placeholder = "Search by Task name..."
-            value = {searchValue}
-            id = "search"
-            onChange = {(e) => {performSearch(e)}}
-          
+
+          <div className="searchbar">
+            <Link to="/home/search"> <FontAwesomeIcon className="navbar-icon-postion" icon={faSearch} /> </Link>
+            <input
+              type="text"
+              placeholder="Search by Task name..."
+              value={searchValue}
+              id="search"
+              onChange={(e) => { performSearch(e) }}
+
 
             />
           </div>
@@ -225,7 +228,7 @@ const Navbar = (props) => {
             <div>
               <input
                 className="createIssue-input-design  font-very-small"
-                type="text"
+                type="date"
                 placeholder="Enter date"
                 value={input.date}
                 onChange={(e) => {

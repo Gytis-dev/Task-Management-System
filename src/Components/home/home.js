@@ -4,6 +4,7 @@ import "../home/home.scss";
 import Navbar from "../../Components/nav-bar/nav-bar";
 import Table from "../task/table";
 import TaskInfo from "../task/task-info";
+import About from "../About/About";
 
 
 
@@ -158,6 +159,11 @@ const Home = () => {
                 <Redirect to="/home" />
               )
             }
+          />
+          <Route
+          path = "/home/userinformation"
+          exact
+          component = {About}
           />
 
         </div>

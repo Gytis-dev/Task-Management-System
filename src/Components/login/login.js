@@ -6,12 +6,14 @@ import "../../global-style/buttons.scss";
 import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
 
+
 const Login = () => {
   const [input, setInput] = useState({ username: "", password: "" });
   let users = [
     {
       name: "Gytis",
       password: 123,
+    
     },
     {
       name: "Modestas",
@@ -39,12 +41,12 @@ const Login = () => {
     });
     if (userStatus === true) {
       loginVerification.isLogged();
-      localStorage.setItem("useris", input.username);
+      localStorage.setItem("useris",input.username);
+      localStorage.setItem("image", JSON.stringify(users));
       return "/home";
     }
   };
 
-  let x = localStorage.getItem("s");
   return (
     <div className="login">
       <div className="login-left" />

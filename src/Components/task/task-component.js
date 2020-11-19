@@ -42,7 +42,7 @@ const TaskComponent = (props) => {
           <div
             className="table-main-body-items-btn"
             style={
-              props.prop.status == "Approved"
+              props.prop.status === "Approved"
                 ? buttonApproved
                 : buttonStyleRegular
             }>
