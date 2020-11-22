@@ -25,7 +25,7 @@ const TaskInfo = (props) => {
     comment: comment,
   });
 
-  const [com, setCom] = useState([]);
+  const [ setCom] = useState([]);
 
   let changeStatus = () => {
     if (state.status === "Approved") {

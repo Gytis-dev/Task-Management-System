@@ -22,7 +22,7 @@
   grid-template-columns: 1fr;
   color: $white-light;
   grid-template-rows: 1fr;
-  height: 70vh;
+  height: 100vh;
   position: relative;
   width: 250px;
   overflow-y: auto;
@@ -30,14 +30,21 @@
     outline: none;
     background-color: $dark;
     color: $white-light;
-
     font-weight: 600;
   }
   &-search-icon:hover{
     filter: drop-shadow(16px 16px 20px red) invert(75%);
-
   }
 
+  &-searchbar{
+    margin:20px 20px;
+  }
+  &-footer{
+    margin:20px 20px;
+  }
+  &-footer:hover:before {
+    width: 50% !important;
+  }
   &-design:before {
     content: "";
     width: 0;

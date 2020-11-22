@@ -119,6 +119,25 @@ const Navbar = (props) => {
 
 
       <div className="navbar font-normal ">
+      <div className="navbar-searchbar">
+            <Link to="/home/search">
+              {" "}
+              <FontAwesomeIcon
+                className="navbar-icon-postion navbar-search-icon"
+                icon={faSearch}
+              />{" "}
+            </Link>
+            <input
+               className="navbar-search-style"
+              type="text"
+              placeholder="Search by Task name..."
+              value={searchValue}
+              id="search"
+              onChange={(e) => {
+                performSearch(e);
+              }}
+            />
+          </div>
         <div className="navbar-menu-one g-left">
           <NavLink exact to="/home" activeStyle={{ color: "#fe4066" }}>
             <div className="navbar-design">
@@ -154,34 +173,17 @@ const Navbar = (props) => {
               My Reports
             </div>
           </NavLink>
-          <div onClick={() => logout()} className="navbar-design ">
+ 
+
+       
+        </div>
+        <div onClick={() => logout()} className="navbar-design navbar-footer">
             <FontAwesomeIcon
               className="navbar-icon-postion"
               icon={faSignOutAlt}
             />
             Log out
           </div>
-
-          <div className="searchbar">
-            <Link to="/home/search">
-              {" "}
-              <FontAwesomeIcon
-                className="navbar-icon-postion navbar-search-icon"
-                icon={faSearch}
-              />{" "}
-            </Link>
-            <input
-               className="navbar-search-style"
-              type="text"
-              placeholder="Search by Task name..."
-              value={searchValue}
-              id="search"
-              onChange={(e) => {
-                performSearch(e);
-              }}
-            />
-          </div>
-        </div>
       </div>
       <div className="createIssue" style={style}>
         <div
