@@ -28,9 +28,12 @@
   overflow-y: auto;
   &-search-style{
     outline: none;
-    background-color: $dark;
-    color: $white-light;
+    background-color: $white-light;
+    color: $dark;
     font-weight: 600;
+    border:none;
+    border-radius:5px;
+    padding:5px;
   }
   &-search-icon:hover{
     filter: drop-shadow(16px 16px 20px red) invert(75%);

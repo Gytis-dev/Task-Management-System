@@ -13,13 +13,20 @@ const Login = () => {
     {
       name: "Gytis",
       password: 123,
-    
+
     },
     {
       name: "Modestas",
       password: 123,
     },
   ];
+
+  const [error, setError] = useState({
+    errorText: "",
+    errorStyle: "hidden"
+  })
+
+
 
   let handleChange = (e) => {
     switch (e.target.id) {
@@ -33,19 +40,35 @@ const Login = () => {
   };
 
   let verification = () => {
+
+
     let userStatus = false;
     users.forEach((user) => {
       if (user.name == input.username && user.password == input.password) {
         userStatus = true;
       }
+
     });
+
+
     if (userStatus === true) {
       loginVerification.isLogged();
-      localStorage.setItem("useris",input.username);
+      localStorage.setItem("useris", input.username);
       localStorage.setItem("image", JSON.stringify(users));
       return "/home";
     }
   };
+
+  let checkError = () => {
+    users.map((us) => {
+      if (us.name != input.username || us.password != input.password) {
+        setError({ errorText: "Incorrect username or password", errorStyle: "visible" })
+      }
+    })
+  }
+
+
+
 
   return (
     <div className="login">
@@ -76,8 +99,11 @@ const Login = () => {
           <div className="g-center">
             <Link to={verification}>
               {" "}
-              <button className="g-btn-login font-small">GET STARTED</button>
+              <button className="g-btn-login font-small" onClick={checkError}>GET STARTED</button>
             </Link>
+          </div>
+          <div style={{ visibility: error.errorStyle }} className="erroras">
+            {error.errorText}
           </div>
         </div>
       </div>

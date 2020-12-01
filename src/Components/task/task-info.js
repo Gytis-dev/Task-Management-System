@@ -25,7 +25,7 @@ const TaskInfo = (props) => {
     comment: comment,
   });
 
-  const [ setCom] = useState([]);
+  const [com, setCom] = useState([]);
 
   let changeStatus = () => {
     if (state.status === "Approved") {
@@ -38,6 +38,7 @@ const TaskInfo = (props) => {
   };
 
   const [val, setVal] = useState("");
+  
   let addComment = () => {
     if (val) {
       props.comment(state.id, val);
@@ -48,10 +49,7 @@ const TaskInfo = (props) => {
     setVal("");
   };
 
-  useEffect(() => {
-    console.log("renderiok");
-    console.log(val);
-  }, [state]);
+
 
   return (
    

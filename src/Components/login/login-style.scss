@@ -60,3 +60,50 @@
     }
   }
 }
+
+.erroras {
+  background:transparent;
+  text-align: center;
+  margin-top: 10px;
+  width:50%;
+  justify-self: center;
+  border-radius: 20px;
+  color:$red-light;
+  font-size:18px;
+  border:2px solid $red-light;
+
+}
+
+
+.cls {
+  animation:15s ani linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+
+  @keyframes ani {
+    from{
+      transform: rotateY(0deg);
+    }
+    to{
+      transform: rotateY(360deg);
+    }
+  }
+
+}
+
+.bubble {
+  animation:6s bub linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  fill:red;
+
+  @keyframes bub {
+    from{
+      transform: rotateZ(0deg);
+    }
+    to{
+      transform: rotateZ(360deg);
+    }
+  }
+
+}

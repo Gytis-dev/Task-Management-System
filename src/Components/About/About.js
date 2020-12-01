@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../About/about.scss";
 import pic from "../../img/login/picture.png";
+import Svg from "../About/Svg";
 
 const About = () => {
   return (
@@ -13,7 +14,9 @@ const About = () => {
         {/* <button className="g-btn-actyve ">Get profesional version</button> */}
       </div>
       <div className="g-center">
-        <img src={pic} />
+       {/* <img src={pic} />*/} 
+       <Svg/>
+
       </div>
     </div>
   );
