@@ -46,7 +46,7 @@ const Navbar = (props) => {
       nameErr = "";
     }
 
-    if (input.date === "") {
+    if (input.date === "" || input.date.length > 10) {
       dateErr = "Enter valid date";
       arr.push(1);
     } else {
@@ -78,7 +78,7 @@ const Navbar = (props) => {
     let isValid = formValid();
 
     if (isValid === true) {
-      console.log("yes");
+      console.log(input.date);
       let object = {
         id: 3,
         name: input.name,

@@ -14,35 +14,37 @@ const Home = () => {
   const [task, setTask] = useState([
     {
       id: 1,
-      name: "Forgot password",
+      name: "Change password",
       reporter: "Gytis",
-      priority: "low",
+      priority: "Low",
       date: "2020-10-06",
       status: "Submitted",
       comment: "comment 1",
-      koment: []
+      koment: [],
     },
     {
       id: 2,
-      name: "Extract report",
+      name: "Create new report",
       reporter: "Gytis",
       priority: "High",
       date: "2020-10-04",
       status: "Submitted",
       comment: "comment 2",
-      koment: []
+      koment: [],
     },
     {
       id: 3,
-      name: "Change system",
+      name: "New process requirements",
       reporter: "Modestas",
       priority: "Middle",
       date: "2020-10-02",
       status: "Submitted",
       comment: "comment 3",
-      koment: []
+      koment: [],
     },
   ]);
+
+  let username = localStorage.getItem("useris");
 
   // My reports filtravimas kai vyksta pirmasis render
   const [myReports, setMyReports] = useState();
@@ -74,7 +76,6 @@ const Home = () => {
       if (taskas.id === item.id) {
         taskas.status = "Approved";
         localStorage.setItem("itemData", JSON.stringify(task));
-
       }
     });
     updateMyReports();
@@ -105,6 +106,7 @@ const Home = () => {
       if (id === tsk.id) {
         tsk.koment.push(value);
         localStorage.setItem("itemData", JSON.stringify(task));
+
       }
     })
   }
@@ -161,9 +163,9 @@ const Home = () => {
             }
           />
           <Route
-          path = "/home/userinformation"
-          exact
-          component = {About}
+            path="/home/userinformation"
+            exact
+            component={About}
           />
 
         </div>

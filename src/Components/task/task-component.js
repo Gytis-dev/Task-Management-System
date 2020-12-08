@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import "../task/task-style.scss";
 import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
+import {
+  faLongArrowAltUp,
+  faLongArrowAltDown
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+
 
 const TaskComponent = (props) => {
   let buttonApproved = {
@@ -23,6 +31,21 @@ const TaskComponent = (props) => {
     color: "white",
   };
 
+  let arrowUp = {
+    marginLeft: "5px",
+    fontWeight:"bold",
+    color:"#03c03c",
+    fontSize:"23px",
+  }
+  let arrowDown = {
+    marginLeft: "5px",
+    fontWeight:"bold",
+    color:"red",
+    fontSize:"23px",
+  }
+
+
+
   return (
     <Link
       to={{
@@ -36,7 +59,14 @@ const TaskComponent = (props) => {
         <div className=" g-center">{props.prop.id}</div>
         <div>{props.prop.name}</div>
         <div>{props.prop.reporter}</div>
-        <div>{props.prop.priority}</div>
+
+        <div>{props.prop.priority}
+        <FontAwesomeIcon 
+        icon = {props.prop.priority === "Low" || props.prop.priority === "Middle" ? faLongArrowAltUp : faLongArrowAltDown}
+        style = {props.prop.priority === "Low" || props.prop.priority === "Middle" ? arrowUp : arrowDown}
+        />
+        </div>
+
         <div>{props.prop.date}</div>
         <div>
           <div

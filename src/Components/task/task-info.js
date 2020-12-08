@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 const TaskInfo = (props) => {
-  let user = localStorage.getItem("useris");
+  let user = localStorage.getItem("itemData");
+  user  = JSON.parse(user);
 
   let {
     id,
@@ -38,6 +39,8 @@ const TaskInfo = (props) => {
   };
 
   const [val, setVal] = useState("");
+
+
   
   let addComment = () => {
     if (val) {
@@ -48,6 +51,10 @@ const TaskInfo = (props) => {
     }
     setVal("");
   };
+
+ 
+  
+
 
 
 
@@ -149,8 +156,13 @@ const TaskInfo = (props) => {
           <div className="task-info-right-menu">
         <div className="g-left font-normal-font  task-info-comment-text">
           <div className="white-light">Comment's ({koment.length})</div>
+
           {koment.map((k) => {
-            return <li key={(id += 1)}>{k}</li>;
+            return (
+            <li key={(id += 1)}>
+            <p>{k}</p>
+            </li>
+            );
           })}
         </div>
         </div>
