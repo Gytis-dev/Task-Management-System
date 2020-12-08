@@ -20,7 +20,7 @@ const Home = () => {
       date: "2020-10-06",
       status: "Submitted",
       comment: "comment 1",
-      koment: [],
+      koment: []
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const Home = () => {
       date: "2020-10-04",
       status: "Submitted",
       comment: "comment 2",
-      koment: [],
+      koment: []
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ const Home = () => {
       date: "2020-10-02",
       status: "Submitted",
       comment: "comment 3",
-      koment: [],
+      koment: []
     },
   ]);
 
@@ -74,6 +74,7 @@ const Home = () => {
   let changeStatus = (item) => {
     task.map((taskas) => {
       if (taskas.id === item.id) {
+
         taskas.status = "Approved";
         localStorage.setItem("itemData", JSON.stringify(task));
       }
@@ -104,7 +105,21 @@ const Home = () => {
   let cmt = (id, value) => {
     task.map(tsk => {
       if (id === tsk.id) {
-        tsk.koment.push(value);
+
+        let date = new Date();
+
+
+
+       
+
+        let o = {
+          nm:useris,
+          c:value,
+          dt:date.toDateString()
+        
+        }
+
+        tsk.koment.push(o);
         localStorage.setItem("itemData", JSON.stringify(task));
 
       }
