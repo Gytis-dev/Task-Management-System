@@ -33,11 +33,8 @@ const TaskInfo = (props) => {
   const [com, setCom] = useState([]);
 
   let changeStatus = () => {
-    if (state.status === "Approved") {
-      return;
-    }
+     props.change(state);
     setState({ status: "Approved" });
-    props.change(state);
     StatusAlertService.showSuccess("Mark this task as complete");
   };
 
@@ -48,8 +45,11 @@ const TaskInfo = (props) => {
     if (val) {
       props.comment(state.id, val);
       setCom([koment]);
-    } else {
-      StatusAlertService.showWarning("Please enter a valid comment");
+    } else if (state.status === "Approved"){
+      StatusAlertService.showWarning("You can not comment, becouse task approved");
+    }
+    else{
+   StatusAlertService.showWarning("Please enter a valid comment");
      setState({ showCart: true}) 
     }
     setVal("");
@@ -75,10 +75,9 @@ const TaskInfo = (props) => {
 
 
 
-
   return (
     <div className="task-info">
-        <StatusAlert/>
+        <StatusAlert />
       <div className="task-info-left-menu">
         <div
           className="task-info-back-button g-left font-normal-font"
