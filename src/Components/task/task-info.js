@@ -169,14 +169,15 @@ const TaskInfo = (props) => {
           </div>
         </div>
       </div>
-      <div className="task-info-right-menu">
-        <div className="g-left font-normal-font  task-info-comment-text">
+      <div className="task-info-right-menu" onClick={check}>
+        <div className="g-left font-normal-font task-info-comment-text"  >
           <div className="white-light"
           >Comment's ({koment.length})</div>
           {koment.map((k) => {
             return (
               <li className="comment-wrap" key={(id += 1)} id={id - 1}>
-                  <p className="username" onClick={check}>{k.nm} <span>added a comment</span></p>
+                  <p className="username" >{k.nm }
+                   </p>
                   <span className="date">{k.dt}</span>
                   <p>{k.c}</p>
               </li>

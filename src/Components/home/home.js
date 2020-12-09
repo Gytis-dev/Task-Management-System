@@ -150,7 +150,6 @@ const Home = () => {
         </div>
         <div className="home-grid-two">
           <Route
-
             path="/home"
             exact
             render={(props) => <Table {...props} addItem={task} />}

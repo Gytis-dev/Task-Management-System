@@ -11,13 +11,11 @@ const About = () => {
           The <span className="red-light">#1</span> software development system used by large
           corporations and medium size entities
         </div>
-        {/* <button className="g-btn-actyve ">Get profesional version</button> */}
       </div>
-      <div className="g-center">
-       {/* <img src={pic} />*/} 
+      <div className="g-center svg-postion">
        <Svg/>
-
       </div>
+    
     </div>
   );
 };
