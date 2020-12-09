@@ -26,6 +26,8 @@ const TaskInfo = (props) => {
     comment: comment,
   });
 
+  const [commentStyle, setCommentStyle] = useState(false);
+
   const [com, setCom] = useState([]);
 
   let changeStatus = () => {
@@ -52,15 +54,28 @@ const TaskInfo = (props) => {
     setVal("");
   };
 
+  let check = (e) => {
 
+    let parentElement = e.target.parentNode;
+    setCommentStyle(!commentStyle);
 
+      if (parentElement.className === "comment-wrap") {
+
+          if (commentStyle) {
+            parentElement.childNodes[1].style.display = "block";
+            parentElement.childNodes[2].style.display = "block";
+          }
+            else {
+              parentElement.childNodes[1].style.display = "none";
+              parentElement.childNodes[2].style.display = "none";
+            }
+          } return
+  }
 
 
 
 
   return (
-
-
     <div className="task-info">
       <div className="task-info-left-menu">
         <div
@@ -155,18 +170,17 @@ const TaskInfo = (props) => {
       </div>
       <div className="task-info-right-menu">
         <div className="g-left font-normal-font  task-info-comment-text">
-          <div className="white-light">Comment's ({})</div>
+          <div className="white-light"
+          >Comment's ({koment.length})</div>
 
-         {koment.map((k) => {
-          return (
-            <li key={(id += 1)}>
-              <p className = "username">{k.nm}</p>
-              {k.dt}
-             <p>{k.c}</p>
-           </li>
-          );
-         })}
-        </div>
+          {koment.map((k) => {
+            return (
+              <li className="comment-wrap" key={(id += 1)} id={id - 1}>
+                  <p className="username" onClick={check}>{k.nm} <span>added a comment</span></p>
+                  <span className="date">{k.dt}</span>
+                  <p>{k.c}</p>
+              </li>
+            );})}</div>
       </div>
     </div>
   );
