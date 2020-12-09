@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../task/task-style.scss";
 import "../../global-style/postion.scss";
+import "../../global-style/buttons.scss";
+
 import "../../global-style/font.scss";
 import {
   faLongArrowAltUp,
   faLongArrowAltDown
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
 
 
 const TaskComponent = (props) => {
@@ -44,8 +44,6 @@ const TaskComponent = (props) => {
     fontSize:"23px",
   }
 
-
-
   return (
     <Link
       to={{
@@ -60,11 +58,13 @@ const TaskComponent = (props) => {
         <div>{props.prop.name}</div>
         <div>{props.prop.reporter}</div>
 
-        <div>{props.prop.priority}
+        <div  className="tooltip" >{props.prop.priority}
         <FontAwesomeIcon 
         icon = {props.prop.priority === "Low" || props.prop.priority === "Middle" ? faLongArrowAltUp : faLongArrowAltDown}
         style = {props.prop.priority === "Low" || props.prop.priority === "Middle" ? arrowUp : arrowDown}
         />
+          <span className="tooltiptext"> {props.prop.priority === "Low" || props.prop.priority === "Middle" ? 'Need to do' : 'Important need to do '}</span>
+
         </div>
 
         <div>{props.prop.date}</div>

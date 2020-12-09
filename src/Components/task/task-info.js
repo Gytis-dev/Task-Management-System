@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import StatusAlert, { StatusAlertService } from 'react-status-alert'
+import 'react-status-alert/dist/status-alert.css'
 
 const TaskInfo = (props) => {
   let user = localStorage.getItem("itemData");
   user = JSON.parse(user);
-
   let {
     id,
     name,
@@ -23,6 +24,7 @@ const TaskInfo = (props) => {
     reporter: reporter,
     priority: priority,
     status: status,
+    showCart: false,
     comment: comment,
   });
 
@@ -32,14 +34,12 @@ const TaskInfo = (props) => {
     if (state.status === "Approved") {
       return;
     }
-
-    alert("Mark this task as complete? Press Yes");
     setState({ status: "Approved" });
     props.change(state);
+    StatusAlertService.showSuccess("Mark this task as complete");
   };
 
   const [val, setVal] = useState("");
-
 
 
   let addComment = () => {
@@ -47,21 +47,15 @@ const TaskInfo = (props) => {
       props.comment(state.id, val);
       setCom([koment]);
     } else {
-      alert("Please enter a valid comment");
+      StatusAlertService.showWarning("Please enter a valid comment");
+     setState({ showCart: true}) 
     }
     setVal("");
   };
 
-
-
-
-
-
-
   return (
-
-
     <div className="task-info">
+        <StatusAlert/>
       <div className="task-info-left-menu">
         <div
           className="task-info-back-button g-left font-normal-font"
@@ -137,7 +131,7 @@ const TaskInfo = (props) => {
           </div>
         <div className="g-left task-info-comment">
           <textarea
-            disabled={state.status === "Approved" && true}
+            disabled={state.status === "Approved" || state.showCart === true  && true}
             className="task-info-comment-style"
             type="text"
             value={val}
@@ -148,7 +142,7 @@ const TaskInfo = (props) => {
           <div
             className="g-btn-comment font-normal-font g-center"
             onClick={addComment}
-            disabled={state.status === "Approved" && true}>
+            disabled={state.status === "Approved"  && true}>
             Add comment
           </div>
         </div>

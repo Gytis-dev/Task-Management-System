@@ -13,7 +13,6 @@ function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <PrivateRoute path="/home" exact component={Home} />
-        {/* <PrivateRoute path="/home/myreports/:id" component={Home}/> */}
         <Redirect from='/home/myreports' to="/home" />
         <Route path="/" render={() => <Error/>}/>
       </Switch>

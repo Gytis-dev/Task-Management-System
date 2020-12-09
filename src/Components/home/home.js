@@ -108,10 +108,6 @@ const Home = () => {
 
         let date = new Date();
 
-
-
-       
-
         let o = {
           nm:useris,
           c:value,

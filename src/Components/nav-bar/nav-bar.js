@@ -173,8 +173,6 @@ const Navbar = (props) => {
               My Reports
             </div>
           </NavLink>
- 
-
        
         </div>
         <div onClick={() => logout()} className="navbar-design navbar-footer">

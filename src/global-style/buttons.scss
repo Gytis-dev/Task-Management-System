@@ -32,7 +32,6 @@
   width: 130px;
   outline: none;
   color: $red-light;
-
   &:hover {
     color: $white-light;
     cursor: pointer;
@@ -70,4 +69,34 @@
   background-color: $dark;
   outline: none;
   cursor: pointer !important;
+}
+
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: $white-light ;
+  color:$dark-light;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 15px;
+  position: absolute;
+  z-index: 6;
+  bottom: -130%;
+  left: 15%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
