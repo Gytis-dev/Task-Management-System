@@ -107,10 +107,7 @@ const Home = () => {
       if (id === tsk.id) {
 
         let date = new Date();
-<<<<<<< HEAD
 
-=======
->>>>>>> 746f3f64e15c33092bdf148a63085ae10f308bc1
         let o = {
           nm:useris,
           c:value,
