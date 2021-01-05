@@ -1,16 +1,79 @@
 @import "../../global-style/colors.scss";
-.svg-postion{
-    margin-bottom:50px;
-}
+
+
 .wrapparent {
+    display:flex;
+    justify-content: center;
+    background:#eef2f7;
+    padding:20px;
+    
 
-   &-about{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 250px 1fr;
-   }
+    .one {
+        display:grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width:100%;
+        margin-left:5%;
+        span {
+            color:$red-light;
+        }
 
-   img {
-       width:50%;
-   }
+        .headeris {
+            color:blue;
+            font-size:36pt;
+            color:#161C2D;
+            align-self: flex-end;
+        }
+        .headeris2 {
+            color:blue;
+            font-size:36pt;
+            color:#161C2D;
+            align-self: flex-start;
+        }
+        .textas {
+            color:#869ab8;
+            margin-top:20px;
+            font-size:19px;
+        }
+
+        .btn1 {
+            background:$red-light;
+            color:#ffffff;
+            padding:13px 20px;
+            text-align: center;
+            font-size:16px;
+            font-weight:600;
+            border-radius: 3px;
+            transform: 1s;
+            font-family: sans-serif;
+
+        }
+        .btn2 {
+            background:#335EEA1a;
+            color:black;
+            padding:13px 20px;
+            font-family: sans-serif;
+            text-align: center;
+            font-size:16px;
+            font-weight:600;
+            border-radius: 3px;
+            margin-left:10px;
+        }
+
+        .btn1:hover{
+            padding:15px 22px;
+        }
+        .btn2:hover{
+            padding:15px 22px;
+        }
+
+        .butonai {
+            margin-top:20px;
+        }
+    }
+  
+    .two img {
+        width:80%;
+        
+    }
+
 }

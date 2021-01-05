@@ -1,21 +1,27 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
+import cover from "../../img/login/coveris.png"
+
 import "../About/about.scss";
 import pic from "../../img/login/picture.png";
-import Svg from "../About/Svg";
 
 const About = () => {
   return (
     <div className="wrapparent">
-      <div className="wrapparent-about g-center">
-        <div className="font-sami-big white-light">
-          The <span className="red-light">#1</span> software development system used by large
-          corporations and medium size entities
+      <div className = "one">
+        <div className = "headeris">Welcome to <span>Task Manager</span></div>
+        <div className = "headeris2">Start creating tasks.</div>
+        <div className = "textas">Build a beautiful, modern site with flexible components built from scratch.</div>
+        <div className = "butonai">
+          <Link className = "btn1">Create Issue</Link>
+          <Link className = "btn2" to = "/home/myreports">View MyReports</Link>
         </div>
       </div>
-      <div className="g-center svg-postion">
-       <Svg/>
+
+      <div className = "two">
+        <img src = {cover} alt = "s"/>
       </div>
-    
+  
     </div>
   );
 };

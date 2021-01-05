@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 import "../../global-style/buttons.scss";
 import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
-import axios from "../../axios-users";
+import axios from '../Axios/config';
 
 const Register = () => {
   useEffect(() => {
-    axios.get("/users.json").then((response) => {
-      setUser(response.data);
-    });
+    axios
+      .get("/users.json")
+      .then((response) => {
+        setUser(response.data);
+      });
   }, []);
 
   const [user, setUser] = useState({});
-
   const [errorUser, setErrorUser] = useState({
     errorUserText: "",
     errorUserStyle: "hidden",
@@ -23,7 +24,6 @@ const Register = () => {
     errorText: "",
     errorStyle: "hidden",
   });
-
   const [errorPassword, setErrorPassword] = useState({
     errorTextPassword: "",
     errorStylePassword: "hidden",

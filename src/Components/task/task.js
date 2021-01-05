@@ -4,9 +4,11 @@ import "../task/task-style.scss";
 
 const Task = (props) => {
 
+
 if (props.property.length > 0){
+
   return props.property.map((item) => {
-    return <TaskComponent prop={item} key={item.id + 1} />;
+    return <TaskComponent prop={item} key={Math.random()}/>;
   });
 }
 else {

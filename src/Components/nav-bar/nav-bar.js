@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../nav-bar/nav-style.scss";
 import { Link, NavLink } from "react-router-dom";
 import "../../global-style/font.scss";
@@ -14,8 +14,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = (props) => {
-  const [style, setStyle] = useState({ display: "none" });
 
+
+  const [style, setStyle] = useState({ display: "none" });
   const [input, setInput] = useState({
     name: "",
     reporter: "",
@@ -30,7 +31,6 @@ const Navbar = (props) => {
     dateError: "",
     commentError: "",
   });
-
   let formValid = () => {
     let nameErr = "";
     let reporterErr = "";
@@ -59,7 +59,6 @@ const Navbar = (props) => {
     } else {
       commentErr = "";
     }
-
     setError({
       nameError: nameErr,
       reporterError: reporterErr,
@@ -78,16 +77,15 @@ const Navbar = (props) => {
     let isValid = formValid();
 
     if (isValid === true) {
-      console.log(input.date);
       let object = {
-        id: 3,
+        id: "",
         name: input.name,
-        reporter: "",
+        reporter: props.current,
         priority: input.priority,
         date: input.date,
         status: "Submitted",
         comment: input.comment,
-        koment: [],
+        komentaras: ""
       };
 
       props.handleFormSubmit(object);
@@ -115,29 +113,32 @@ const Navbar = (props) => {
 
   return (
     <div className="parent">
+
+      <div className = "currentUser">
+      <div className = "logo">{props.current ? props.current[0] : null}</div>
+        <p>Hello, <span>{props.current}</span></p>
+        
+    </div>
+
       <div className="overlay-createIssue" style={style} />
 
-
       <div className="navbar font-normal ">
-      <div className="navbar-searchbar">
-            <Link to="/home/search">
-              {" "}
-              <FontAwesomeIcon
-                className="navbar-icon-postion navbar-search-icon"
-                icon={faSearch}
-              />{" "}
-            </Link>
-            <input
-               className="navbar-search-style"
-              type="text"
-              placeholder="Search by Task name..."
-              value={searchValue}
-              id="search"
-              onChange={(e) => {
-                performSearch(e);
-              }}
-            />
+        <div className="navbar-searchbar navbar-search-center">
+          <input
+            className="navbar-search-style"
+            type="text"
+            placeholder= "Search..."
+            value={searchValue}
+            id="search"
+            onChange={(e) => {
+              performSearch(e);
+            }}
+          />
+          <div className="searchValue" style={props.counterTasks ? { display: "block", padding:"5px" } : { display: "none" }}>
+            Total items found: {props.counterTasks}
           </div>
+        </div>
+
         <div className="navbar-menu-one g-left">
           <NavLink exact to="/home" activeStyle={{ color: "#fe4066" }}>
             <div className="navbar-design">
@@ -145,9 +146,9 @@ const Navbar = (props) => {
               Dashboard
             </div>
           </NavLink>
-          <NavLink to ="/home/userinformation">
-          <div className="navbar-design">
-            <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
+          <NavLink to="/about">
+            <div className="navbar-design">
+              <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
             About
           </div>
           </NavLink>
@@ -161,7 +162,7 @@ const Navbar = (props) => {
             />
             Create Issue
           </div>
-        
+
           <NavLink
             exact
             to="/home/myreports"
@@ -173,13 +174,13 @@ const Navbar = (props) => {
               My Reports
             </div>
           </NavLink>
-       
+
         </div>
         <div onClick={() => logout()} className="navbar-design navbar-footer">
-            <FontAwesomeIcon
-              className="navbar-icon-postion"
-              icon={faSignOutAlt}
-            />
+          <FontAwesomeIcon
+            className="navbar-icon-postion"
+            icon={faSignOutAlt}
+          />
             Log out
           </div>
       </div>

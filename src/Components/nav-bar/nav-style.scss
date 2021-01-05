@@ -1,4 +1,5 @@
 @import "../../global-style/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .header {
   display:flex;
@@ -22,28 +23,35 @@
   grid-template-columns: 1fr;
   color: $white-light;
   grid-template-rows: 1fr;
-  height: 100vh;
+  height: 84vh;
   position: relative;
   width: 275px;
-  overflow-y: auto;
+  &-search-center{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: flex-start;
+  }
   &-search-style{
     outline: none;
-    background-color: $white-light;
+    background-color: #eef2f7;
     color: $dark;
     font-weight: 600;
     border:none;
-    border-radius:5px;
-    padding:5px;
+    padding:12px;
+    border-radius:2px;
+    width:95%;
+    box-shadow:8px 6px 15px -7px rgba(0,0,0,0.7)
   }
   &-search-icon:hover{
     filter: drop-shadow(16px 16px 20px red) invert(75%);
   }
 
   &-searchbar{
-    margin:20px 20px;
+    margin:0px 20px;
   }
   &-footer{
-    margin:20px 20px;
+    margin:20px 20px 16px 20px;
   }
   &-footer:hover:before {
     width: 50% !important;
@@ -71,7 +79,7 @@
     margin: 0 16px 0 16px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr auto;
-    grid-gap: 40px;
+    grid-gap: 30px;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -100,7 +108,7 @@
   top: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
-  background-color: $dark;
+  background-color: $dark-blue;
   width: 500px;
   height: auto;
   z-index: 1;
@@ -138,7 +146,7 @@
 
   &-name {
     text-transform: uppercase;
-    color: $red-light;
+    color: $white-light;
     padding: 0 0 15px 0;
   }
 
@@ -195,7 +203,7 @@
 
   &-input-design option {
     height: 200px !important;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 600;
     width: 90%;
     background: $dark;
@@ -207,3 +215,64 @@
   padding: 5px 10px 10px 10px;
   color: $red-light;
 }
+
+.searchValue {
+  animation-name: ani;
+  animation-duration:3s;
+  color: $white-light;
+  font-weight: 200;
+}
+
+@keyframes ani {
+  from {
+    color:$dark;
+  }
+  to {
+    color:$white-light;
+  }
+}
+
+.currentUser {
+  padding:10px;
+  color:$white-light;
+  font-size:18px;
+  margin:0;
+  margin-left:10px;
+  font-weight: normal;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  
+
+
+  span {
+    color:$red-light;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left:10px;
+    margin-right:10px;
+   
+  }
+
+  .logo {
+    background:rgb(182, 181, 181);
+    height:60px;
+    width:60px;
+    border-radius: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size:24pt;
+    margin-top:5px;
+    margin-bottom:20px;
+    margin-right:20px;
+    color:white;
+    text-transform: uppercase;
+    box-shadow:8px 6px 15px -7px rgba(0,0,0,0.7);
+
+  }
+  
+}
+
+

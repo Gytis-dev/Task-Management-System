@@ -94,7 +94,6 @@
 }
 .error{
   position: relative;
-  // width: 360px;
 }
 .erroras {
   color:$red-light;
@@ -127,7 +126,7 @@
   animation:6s bub linear infinite;
   transform-box: fill-box;
   transform-origin: center;
-  fill:red;
+  fill:$red-light;
 
   @keyframes bub {
     from{

@@ -37,7 +37,7 @@
   }
   &:-webkit-autofill {
     -webkit-text-fill-color: $red-light !important;
-    -webkit-box-shadow: 0 0 0px 1000px $dark inset;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(85, 120, 136, 0.253) inset;
     transition: background-color 5000s ease-in-out 0s;
   }
   &:hover {
@@ -78,7 +78,7 @@
   border: solid 2px $red-light;
   color: $red-light;
   height: 35px;
-  background-color: $dark;
+  background-color: transparent;
   outline: none;
   text-align: center;
  &:hover{
@@ -92,7 +92,7 @@
   border: solid 2px $red-light;
   color: $red-light;
   height: 35px;
-  background-color: $dark;
+  background-color: transparent;
   outline: none;
   cursor: pointer !important;
 }

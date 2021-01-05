@@ -5,13 +5,13 @@ import loginVerification from "../login/login-verification";
 import "../../global-style/buttons.scss";
 import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
-import axios from "../../axios-users";
+import axios from '../Axios/config';
 
 const Login = () => {
   useEffect(() => {
-    axios.get("/users.json").then((response) => {
-      setUser(response.data);
-    });
+    axios.get('/users.json').then(response => {
+    setUser(response.data)
+  })
   }, []);
   const [user, setUser] = useState({});
   const [input, setInput] = useState({ username: "", password: "" });
@@ -49,6 +49,7 @@ const Login = () => {
       return "/";
     }
   };
+
 
   let checkError = () => {
     const value = Object.keys(user).find(

@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .font-sami-big {
   font-weight: 600;
   font-size: 32px;
   cursor: default;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .font-normal-font {
   font-size: 16px;
@@ -14,30 +17,30 @@
 {
    font-size: 16px !important;
   font-weight: 600 !important;
-    font-family: sans-serif !important;
+  font-family: 'Poppins', sans-serif;
 
 }
 .font-normal-big {
   font-weight: 600;
   font-size: 22px;
   cursor: default;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .font-very-small {
   font-size: 12px;
   font-weight: 600;
   cursor: default;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .font-small {
   font-size: 14px;
   font-weight: 600;
   cursor: default;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .font-normal {
   font-size: 16px;
   font-weight: 400;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   cursor: default;
 }
