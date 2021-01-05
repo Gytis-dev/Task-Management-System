@@ -4,6 +4,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
+  overflow-y: auto;
+  
   &-left {
     grid-column: 1;
     background-image: url("../../img/login/image.jpg");
@@ -27,12 +29,15 @@
     background-color: $dark-light;
     position: relative;
   }
-}
+  &-foter{
+    margin-top:10px;
+  }
 
-.login-card {
+}
+.login-card-register {
   display: grid;
   color: $red-light;
-  grid-gap: 16px;
+  grid-gap: 28px;
   position: absolute;
   width: 100%;
   top: 50%;
@@ -41,6 +46,32 @@
   &-name {
     text-transform: uppercase;
     letter-spacing: 1px;
+  }
+  &-postion-input-left{
+    margin-left:16px;
+  }
+  &-postion-input-right{
+    margin-right:16px;
+  }
+}
+.login-card {
+  display: grid;
+  color: $red-light;
+  grid-gap: 28px;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &-name {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  &-postion-input-left{
+    margin-left:16px;
+  }
+  &-postion-input-right{
+    margin-right:16px;
   }
 }
 
@@ -58,20 +89,21 @@
       grid-row: 2;
       grid-column: 1/2;
     }
+   
   }
 }
-
+.error{
+  position: relative;
+  // width: 360px;
+}
 .erroras {
-  background:transparent;
-  text-align: center;
-  margin-top: 10px;
-  width:50%;
-  justify-self: center;
-  border-radius: 20px;
   color:$red-light;
-  font-size:18px;
-  border:2px solid $red-light;
-
+  font-size:12px;
+  font-weight: 600;
+  font-family: sans-serif;
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
 }
 
 
@@ -105,5 +137,4 @@
       transform: rotateZ(360deg);
     }
   }
-
 }

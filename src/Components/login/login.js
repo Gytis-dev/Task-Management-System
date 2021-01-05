@@ -1,34 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../login/login-style.scss";
 import { Link } from "react-router-dom";
 import loginVerification from "../login/login-verification";
 import "../../global-style/buttons.scss";
 import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
-
+import axios from "../../axios-users";
 
 const Login = () => {
+  useEffect(() => {
+    axios.get("/users.json").then((response) => {
+      setUser(response.data);
+    });
+  }, []);
+  const [user, setUser] = useState({});
   const [input, setInput] = useState({ username: "", password: "" });
-  let users = [
-    {
-      name: "Gytis",
-      password: 123,
-
-    },
-    {
-      name: "Modestas",
-      password: 123,
-    },
-  ];
-
   const [error, setError] = useState({
     errorText: "",
-    errorStyle: "hidden"
-  })
+    errorStyle: "hidden",
+  });
 
-
+  const [errorPassword, setErrorPassword] = useState({
+    errorTextPassword: "",
+    errorStylePassword: "hidden",
+  });
 
   let handleChange = (e) => {
+    // eslint-disable-next-line default-case
     switch (e.target.id) {
       case "name":
         setInput({ ...input, username: e.target.value });
@@ -40,70 +38,98 @@ const Login = () => {
   };
 
   let verification = () => {
-
-
-    let userStatus = false;
-    users.forEach((user) => {
-      if (user.name == input.username && user.password == input.password) {
-        userStatus = true;
-      }
-
-    });
-
-
-    if (userStatus === true) {
+    const value = Object.keys(user).find(
+      (key) => user[key].name === input.username &&  user[key].password === input.password
+    );
+    if (value !== undefined && input.password !== '' && input.username !== '') {
       loginVerification.isLogged();
-      localStorage.setItem("useris", input.username);
-      localStorage.setItem("image", JSON.stringify(users));
       return "/home";
+    }
+    else{
+      return "/";
     }
   };
 
   let checkError = () => {
-    users.map((us) => {
-      if (us.name != input.username || us.password != input.password) {
-        setError({ errorText: "Incorrect username or password", errorStyle: "visible" })
-      }
-    })
-  }
-
-
-
-
+    const value = Object.keys(user).find(
+      (key) => user[key].name === input.username
+    );
+    const valuePassword = Object.keys(user).find(
+      (key) => user[key].password === input.password
+    );
+    if (value) {
+      setError({ errorText: "", errorStyle: "visible" });
+    }
+    if (valuePassword) {
+      setErrorPassword({
+        errorTextPassword: "",
+        errorStylePassword: "visible",
+      });
+    }
+    if (value === undefined ) {
+      setError({ errorText: "Incorrect username", errorStyle: "visible" });
+    }
+    if (valuePassword === undefined || input.password !== '') {
+      setErrorPassword({
+        errorTextPassword: "Incorrect password",
+        errorStylePassword: "visible",
+      });    }
+  };
   return (
     <div className="login">
       <div className="login-left" />
       <div className="login-right">
+        <div className="g-right">
+          <Link to="/register">
+            <button className="g-btn-right-login font-small">Register</button>
+          </Link>
+        </div>
         <div className="login-card ">
-          <div className="login-card-name g-center font-sami-big">Log in</div>
+          <div className="login-card-name g-center font-sami-big" style={{ marginLeft: "15px" }}>Log in</div>
           <div className="g-center">
-            <input
-              className="g-login-input"
-              type="text"
-              placeholder="Username"
-              value={input.username}
-              onChange={handleChange}
-              id="name"
-            />
+            <label className="error" style={{ width: "100%" }}>
+              <input
+                style={{ width: "100%" }}
+                className="g-login-input"
+                type="text"
+                placeholder="Username"
+                value={user.username}
+                onChange={handleChange}
+                id="name"
+              />
+              <span
+                className="erroras"
+                style={{ visibility: error.errorStyle }}
+              >
+                {error.errorText}
+              </span>
+            </label>
           </div>
           <div className="g-center">
-            <input
-              className="g-login-input"
-              type="password"
-              placeholder="Password"
-              value={input.password}
-              onChange={handleChange}
-              id="pass"
-            />
+            <label className="error" style={{ width: "100%" }}>
+              <input
+                style={{ width: "100%" }}
+                className="g-login-input"
+                type="password"
+                placeholder="Password"
+                value={user.password}
+                onChange={handleChange}
+                id="pass"
+              />
+              <span
+                className="erroras"
+                style={{ visibility: errorPassword.errorStylePassword }}
+              >
+                {errorPassword.errorTextPassword}
+              </span>
+            </label>
           </div>
-          <div className="g-center">
+          <div className="login-foter g-center">
             <Link to={verification}>
-              {" "}
-              <button className="g-btn-login font-small" onClick={checkError}>GET STARTED</button>
+              <button className="g-btn-actyve font-small" style={{ marginLeft: "15px" }} onClick={checkError}>
+                Login
+              </button>
             </Link>
-          </div>
-          <div style={{ visibility: error.errorStyle }} className="erroras">
-            {error.errorText}
           </div>
         </div>
       </div>

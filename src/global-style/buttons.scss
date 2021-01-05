@@ -1,14 +1,40 @@
 @import "../global-style/colors.scss";
+
+.g-btn-right-register{
+  background: none;
+  color: $red-light;
+  outline: none;
+  border: none;
+  padding: 6px 16px 0 16px;
+  cursor: pointer;
+  &::before{
+    padding-right: 4px;
+    content: '<';
+  }
+}
+.g-btn-right-login{
+  background: none;
+  color: $red-light;
+  outline: none;
+  border: none;
+  padding: 16px;
+  cursor: pointer;
+  &::after{
+    padding-left: 4px;
+    content: '>';
+  }
+}
 .g-login-input {
   border: none;
   border-radius: 35px;
-  outline: none;
+  outline:none;
   background: rgba(255, 255, 255, 0.15);
   color: $red-light;
-  width: 60%;
   height: 35px;
-  padding: 0 15px;
-
+  padding: 0 0 0 15px;
+  &:focus{
+    box-shadow: 0px 0px 0px 2px $red-light ;
+  }
   &:-webkit-autofill {
     -webkit-text-fill-color: $red-light !important;
     -webkit-box-shadow: 0 0 0px 1000px $dark inset;
