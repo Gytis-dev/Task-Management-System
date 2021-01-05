@@ -1,130 +1,136 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import StatusAlert, { StatusAlertService } from 'react-status-alert'
-import 'react-status-alert/dist/status-alert.css'
+import API from "../Axios/config";
+
+
 
 const TaskInfo = (props) => {
-  let user = localStorage.getItem("itemData");
-  user = JSON.parse(user);
-  let {
-    id,
-    name,
-    reporter,
-    priority,
-    date,
-    status,
-    comment,
-    koment,
-  } = props.location.state.from;
 
-  const [state, setState] = useState({
-    id: id,
-    name: name,
-    reporter: reporter,
-    priority: priority,
-    status: status,
-    showCart: false,
-    comment: comment,
-  });
-
+  const [state, setState] = useState({});
+  const [komentaras, setKomentaras] = useState([]);
+  const [val, setVal] = useState("");
   const [commentStyle, setCommentStyle] = useState(false);
 
-  const [com, setCom] = useState([]);
+  useEffect(() => {
+    API.get(`/todoList/${props.location.state.from.id}.json`)
+      .then(res => {
+        setState(res.data);
+        let arr = [];
+        let commentItems;
+        commentItems = res.data.komentaras;
+        for (let key in commentItems) {
+          arr.push(commentItems[key])
+        }
+        let items = arr.map(cmt => cmt);
+        setKomentaras(items);
+      })
+      .catch(err => console.log(err))
+  }, [])
 
-  let changeStatus = () => {
-     props.change(state);
-    setState({ status: "Approved" });
-    StatusAlertService.showSuccess("Mark this task as complete");
+  let changeStatus = (e) => {
+
+    if (state.status == "Approved" || state.status == "Rejected") {
+      return 0;
+    }
+    else {
+      API.patch(`/todoList/${props.location.state.from.id}.json`, {
+        status: e.target.innerText
+      })
+        .then(res => {
+          setState({ ...state, status: res.data.status })
+        })
+        .catch(err => console.log(err))
+    }
   };
-
-  const [val, setVal] = useState("");
-
 
   let addComment = () => {
-    if (val) {
-      props.comment(state.id, val);
-      setCom([koment]);
-    } else if (state.status === "Approved"){
-      StatusAlertService.showWarning("You can not comment, becouse task approved");
+    if (state.status == "Approved" || state.status == "Rejected") {
+      alert("This issue has been already resolved")
+      return 0;
     }
-    else{
-   StatusAlertService.showWarning("Please enter a valid comment");
-     setState({ showCart: true}) 
+    else {
+      let comment = {
+        commentator: props.user,
+        val: val
+      }
+
+      API.post(`/todoList/${props.location.state.from.id}/komentaras.json`, comment)
+        .then(res => {
+          console.log("Comment succesfully posted!");
+          setKomentaras([...komentaras, comment])
+          setVal("");
+        })
+        .catch(err => console.log(err));
     }
-    setVal("");
-  };
-
-
-  let check = (e) => {
-    let parentElement = e.target.parentNode;
-    setCommentStyle(!commentStyle);
-
-      if (parentElement.className === "comment-wrap") {
-
-          if (commentStyle) {
-            parentElement.childNodes[1].style.display = "block";
-            parentElement.childNodes[2].style.display = "block";
-          }
-            else {
-              parentElement.childNodes[1].style.display = "none";
-              parentElement.childNodes[2].style.display = "none";
-            }
-          } return
   }
+  let checkStyle = () => {
 
+    switch (state.status) {
+      case "Approved":
+        return { color: "rgb(8, 95, 99)" }
+        break;
+      case "Submitted":
+        return { color: "rgb(7, 30, 61)" }
+        break;
+      case "Rejected":
+        return { color: "rgb(254, 64, 102)" }
+        break;
+      case "Waiting answers":
+        return { color: "rgb(93, 93, 90)" }
+        break;
+      case "Verification":
+        return { color: "rgb(39, 142, 165)" }
+        break;
+    }
+  }
 
 
   return (
     <div className="task-info">
-        <StatusAlert />
+
       <div className="task-info-left-menu">
         <div
           className="task-info-back-button g-left font-normal-font"
           onClick={() => props.history.push("/home")}>
           Back
       </div>
-        <div className="font-normal-big g-left task-info-title-name">{" "}{name}</div>
+        <div className="font-normal-big g-left task-info-title-name">{" "}</div>
         <div className="task-info-body-grid">
           <div>
             <div className="font-normal-font g-left task-info-body-grid-title ">
-              Reporter:{" "}
+              <h4 style={{ margin: "0" }}>Reporter:{" "}</h4>
               <div className="task-info-body-grid-descripsion">
-                {reporter}
+                {state.reporter}
               </div>
             </div>
             <div className="font-normal-font g-left task-info-body-grid-title ">
-              Priority:{" "}
+              <h4 style={{ margin: "0" }}>Task priority:{" "}</h4>
               <div className="task-info-body-grid-descripsion">
-                {priority}
+                {state.priority}
               </div>
             </div>
           </div>
           <div>
             <div className="font-normal-font g-left task-info-body-grid-title ">
-              Date:{" "}
+              <h4 style={{ margin: "0" }}>Task deadline:{" "}</h4>
               <div className="task-info-body-grid-descripsion">
-                {date}
+                {state.date}
               </div>
             </div>
             <div className=" g-left">
               <div
                 className="font-normal-font task-info-body-grid-title-status"
-                onClick={changeStatus}
-              >
-                <div >
-                  Status:{" "}
 
+              >
+                <div className="btn-parent">
+                  <h4 style={{ margin: "0" }}>Task status:{" "}<span style={checkStyle()}>{state.status}</span></h4>
+                  <button className="btn-btn" onClick={(e) => changeStatus(e)}>Verification</button>
+                  <button className="btn-btn" onClick={(e) => changeStatus(e)}>Waiting answers</button>
+                  <button className="btn-btn" onClick={(e) => changeStatus(e)}>Approved</button>
+                  <button className="btn-btn" onClick={(e) => changeStatus(e)}>Rejected</button>
                 </div>
-                <div className="task-info-body-grid-descripsion"
-                  style={{ marginLeft: "5px" }}
-                  style={
-                    status === "Submitted"
-                      ? { color: "rgb(255, 199, 44)" }
-                      : { color: "rgb(3, 192, 60)" }
-                  }
-                >
-                  {status}
+                <div className="task-info-body-grid-descripsion">
                 </div>
                 <div className="task-info-body-grid-title-status-edit">
                   <FontAwesomeIcon icon={faEdit} />
@@ -134,15 +140,15 @@ const TaskInfo = (props) => {
           </div>
           <div>
             <div className="font-normal-font g-left task-info-body-grid-title ">
-              Description:{" "}
+              <h4 style={{ margin: "0" }}>Task description:{" "}</h4>
               <div className="task-info-body-grid-descripsion">
-                {comment}
+                {state.comment}
               </div>
             </div>
             <div className="font-normal-font g-left task-info-body-grid-title ">
-              Id:{" "}
+              <h4 style={{ margin: "0" }}>Task unique number:{" "}</h4>
               <div className="task-info-body-grid-descripsion ">
-                {id}
+                {props.location.state.from.number}
               </div>
             </div>
           </div>
@@ -153,7 +159,7 @@ const TaskInfo = (props) => {
           </div>
         <div className="g-left task-info-comment">
           <textarea
-            disabled={state.status === "Approved" || state.showCart === true  && true}
+            disabled={state.status === "Approved" || state.status === "Rejected" || state.showCart === true && true}
             className="task-info-comment-style"
             type="text"
             value={val}
@@ -164,24 +170,21 @@ const TaskInfo = (props) => {
           <div
             className="g-btn-comment font-normal-font g-center"
             onClick={addComment}
-            disabled={state.status === "Approved"  && true}>
+            disabled={state.status === "Approved" && true}>
             Add comment
           </div>
         </div>
       </div>
-      <div className="task-info-right-menu" onClick={check}>
-        <div className="g-left font-normal-font task-info-comment-text"  >
-          <div className="white-light"
-          >Comment's ({koment.length})</div>
-          {koment.map((k) => {
-            return (
-              <li className="comment-wrap" key={(id += 1)} id={id - 1}>
-                  <p className="username" >{k.nm }
-                   </p>
-                  <span className="date">{k.dt}</span>
-                  <p>{k.c}</p>
-              </li>
-            );})}</div>
+      <div className="task-info-right-menu">
+        <div className="g-left font-normal-font task-info-comment-text">
+          <h2 style={{ color: "white" }}>Comment's ({komentaras.length})</h2>
+          {komentaras.map((comment) => {
+            return <li className="parent" key={state.number += 1}>
+              <h4 className="comment-style" >{comment.commentator}</h4> <small>Added a comment</small>
+              <div className="commentas">{comment.val}</div>
+            </li>
+          })}
+        </div>
       </div>
     </div>
   );

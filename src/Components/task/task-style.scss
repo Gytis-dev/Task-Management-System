@@ -1,17 +1,24 @@
 @import "../../global-style/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .table-main {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 6% 88% 6%;
   height: 100vh;
+  padding:20px;
+  font-family: sans-serif;
+  background-color:#fff;
   &-header {
     display: grid;
     grid-row: 1;
     grid-template-columns: 5% 20% 25% 20% 15% auto;
-    background-color: $dark;
-    color: $white-light;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: #6c757d;
+    border-top:2px solid #d5dae0;
+    border-bottom:2px solid #d5dae0;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
   }
   &-body {
     grid-row: 2;
@@ -19,26 +26,22 @@
     overflow-x: hidden;
   }
   &-body-items {
-    color: $white-light;
+    color: #6c757d;
     grid-template-columns: 5% 20% 25% 20% 15% auto;
     display: grid;
-    border-bottom: solid 1px $white-light;
+    border-bottom: solid 2px #d5dae0;
     padding-top: 8px;
     padding-bottom: 8px;
   }
   &-body-items:hover {
-    background-color: $dark-light;
+    background-color: #eef2f7;
     cursor: pointer;
   }
   &-body-items-btn {
     width: 130px;
   }
 
-  &-footer {
-    grid-row: 3;
-    background-color: $dark;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-  }
+
 }
 
 .task-info {
@@ -50,7 +53,6 @@
   &-back-button {
     cursor: pointer;
     color: $white-light;
-    padding-bottom: 22px;
   }
   &-back-button:hover {
     color: $red-light;
@@ -68,22 +70,24 @@
 
   &-body-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+   // grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows:1fr 1fr 1fr;
 
     &-title {
-      padding: 8px 0;
-      color: $white-light;
+      padding: 5px 0;
+      color:rgb(104, 102, 102);
       font-weight: 200;
       font-size: 14px;
+  
     }
 
     &-title-status {
-      padding: 8px 0;
+      padding: 10px 0;
       font-weight: 200;
       display: grid;
       font-size: 14px;
       grid-template-columns: 1fr auto auto;
-      color: $white-light;
+      color:rgb(104, 102, 102);
       cursor: pointer;
 
       &-edit {
@@ -93,7 +97,7 @@
 
     &-descripsion {
       margin-left: 5px;
-      font-weight: 600;
+      font-weight: 200;
     }
 
 
@@ -103,7 +107,7 @@
   
 }
   &-title-comment {
-    color: $white-light;
+    color:rgb(104, 102, 102);
     padding: 16px 0 22px 0;
   }
 
@@ -114,7 +118,7 @@
       height: 140px;
       width: 100%;
       resize: none;
-      font-size: 14px;
+      font-size: 16pt;
     }
     &-text {
       display: block;
@@ -134,11 +138,11 @@
       padding:10px;
       width: 100%;
       background: $white-light;
-      font-size: 10px;
+      font-size: 16px;
       word-break: break-all;
     }
     &-text li:hover {
-        box-shadow: -4px 0px 0px 0px $red-light;
+      box-shadow: -4px 0px 0px 0px $red-light;
       background: rgb(192, 191, 191);
       cursor:pointer;
 
@@ -152,7 +156,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 24px;
-    background-color: $dark-light;
+    background-color: #313a46;
   }
   &-left-menu {
     overflow-y: auto;
@@ -167,14 +171,53 @@
   }
 }
 
-  .username {
-    font-size:12pt;
-    margin:0px;
+  .comment-style {
+    margin:0;
     font-weight: bolder;
-    span {
-      font-size:8pt;
-      font-style: italic;
-      font-weight:normal;
-    }
   }
+  small {
+    font-weight: lighter;
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+
+  .commentas {
+    margin:0px;
+    margin-top:5px;
+    font-weight: normal;
+  }
+  .tooltip {
+    
+    display:flex;
+    width:40%;
+    justify-content: space-between;
+  }
+
+  .head {
+    font-size: 35pt;
+    color:gray;
+    padding:5px 30px;
+    font-weight: 400;
+    text-shadow: 1px 0px 4px rgba(164, 164, 167, 0.78);
+    font-family: 'Poppins', sans-serif;
+  }
+  .btn-btn {
+    margin-left:5px;
+    padding:5px 10px;
+    outline:none;
+    border:none;
+    border-radius:3px;
+  }
+  .btn-btn:hover{
+    cursor:pointer;
+    background:gray;
+    color:white;
+    border-radius:3px;
+
+  }
+  .btn-parent {
+    display:flex;
+  }
+
+
 

@@ -27,11 +27,21 @@
     background-color: $dark-light;
     position: relative;
   }
+  &-foter{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 16px;
+    margin-right: 18%;
+    margin-top:16px;
+  }
+  &-foter-top{
+    margin-top:16px;
+  }
 }
 
 .login-card {
   display: grid;
-  color: $red-light;
+  color: $white-light;
   grid-gap: 16px;
   position: absolute;
   width: 100%;
@@ -41,6 +51,12 @@
   &-name {
     text-transform: uppercase;
     letter-spacing: 1px;
+  }
+  &-postion-input-left{
+    margin-left:16px;
+  }
+  &-postion-input-right{
+    margin-right:16px;
   }
 }
 
@@ -57,6 +73,10 @@
     &-right {
       grid-row: 2;
       grid-column: 1/2;
+    }
+    &-foter{
+      grid-template-columns: 1fr ;
+
     }
   }
 }

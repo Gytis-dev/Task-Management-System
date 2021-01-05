@@ -1,32 +1,27 @@
-import React, { useState } from "react";
+import React,{useState,useEffect} from 'react'  
 import "../login/login-style.scss";
 import { Link } from "react-router-dom";
 import loginVerification from "../login/login-verification";
 import "../../global-style/buttons.scss";
 import "../../global-style/postion.scss";
 import "../../global-style/font.scss";
+import axios from '../Axios/config';
 
 
 const Login = () => {
+
+  useEffect(() => {
+    axios.get('/users.json').then(response => {
+    setUser(response.data)
+  })
+  }, []);
+  
+  const [user, setUser] = useState({})  
   const [input, setInput] = useState({ username: "", password: "" });
-  let users = [
-    {
-      name: "Gytis",
-      password: 123,
-
-    },
-    {
-      name: "Modestas",
-      password: 123,
-    },
-  ];
-
   const [error, setError] = useState({
     errorText: "",
     errorStyle: "hidden"
   })
-
-
 
   let handleChange = (e) => {
     switch (e.target.id) {
@@ -40,36 +35,32 @@ const Login = () => {
   };
 
   let verification = () => {
-
-
     let userStatus = false;
-    users.forEach((user) => {
-      if (user.name == input.username && user.password == input.password) {
+    for (var i in user) {
+      if (user[i].name == input.username && user[i].password == input.password) {
         userStatus = true;
       }
+      if (userStatus === true) {
 
-    });
+        axios.patch("/currentUser.json", {name: input.username})
+        .then (res => console.log("Logged in succesfully"))
+        .catch (err => console.log(err))
 
 
-    if (userStatus === true) {
-      loginVerification.isLogged();
-      localStorage.setItem("useris", input.username);
-      localStorage.setItem("image", JSON.stringify(users));
-      return "/home";
+        loginVerification.isLogged();
+        return "/home";
+      }
     }
   };
 
+
   let checkError = () => {
-    users.map((us) => {
-      if (us.name != input.username || us.password != input.password) {
+    for (var i in user) {
+      if (user[i].name != input.username || user[i].password != input.password) {
         setError({ errorText: "Incorrect username or password", errorStyle: "visible" })
       }
-    })
+    }
   }
-
-
-
-
   return (
     <div className="login">
       <div className="login-left" />
@@ -81,7 +72,7 @@ const Login = () => {
               className="g-login-input"
               type="text"
               placeholder="Username"
-              value={input.username}
+              value={user.username}
               onChange={handleChange}
               id="name"
             />
@@ -91,16 +82,22 @@ const Login = () => {
               className="g-login-input"
               type="password"
               placeholder="Password"
-              value={input.password}
+              value={user.password}
               onChange={handleChange}
               id="pass"
             />
           </div>
-          <div className="g-center">
+        <div className="login-foter">
+          <div className="g-right ">
             <Link to={verification}>
-              {" "}
-              <button className="g-btn-login font-small" onClick={checkError}>GET STARTED</button>
+              <button className="g-btn-actyve font-small" onClick={checkError}>Login</button>
             </Link>
+          </div>
+          <div className="g-right">
+            <Link to ="/register">
+              <button className="g-btn-comment font-small" >Register</button>
+            </Link>
+          </div>
           </div>
           <div style={{ visibility: error.errorStyle }} className="erroras">
             {error.errorText}

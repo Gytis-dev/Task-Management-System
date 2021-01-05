@@ -1,185 +1,124 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Route, Link, useHistory, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, useHistory, Redirect, Switch } from "react-router-dom";
 import "../home/home.scss";
 import Navbar from "../../Components/nav-bar/nav-bar";
 import Table from "../task/table";
 import TaskInfo from "../task/task-info";
 import About from "../About/About";
+import API from "../Axios/config"
+import { faTasks } from "@fortawesome/free-solid-svg-icons";
 
+const Home = (props) => {
 
-
-const Home = () => {
-  let useris = localStorage.getItem("useris");
-
-  const [task, setTask] = useState([
-    {
-      id: 1,
-      name: "Change password",
-      reporter: "Gytis",
-      priority: "Low",
-      date: "2020-10-06",
-      status: "Submitted",
-      comment: "comment 1",
-      koment: []
-    },
-    {
-      id: 2,
-      name: "Create new report",
-      reporter: "Gytis",
-      priority: "High",
-      date: "2020-10-04",
-      status: "Submitted",
-      comment: "comment 2",
-      koment: []
-    },
-    {
-      id: 3,
-      name: "New process requirements",
-      reporter: "Modestas",
-      priority: "Middle",
-      date: "2020-10-02",
-      status: "Submitted",
-      comment: "comment 3",
-      koment: []
-    },
-  ]);
-
-  let username = localStorage.getItem("useris");
-
-  // My reports filtravimas kai vyksta pirmasis render
+  const [trigger, setTrigger] = useState(false);
+  const [task, setTask] = useState([{}]);
+  const [count, setCount] = useState(0);
+  const [load, setload] = useState({ display: "none", text: "" });
+  const [currentUser, setCurrentUser] = useState();
   const [myReports, setMyReports] = useState();
 
   useEffect(() => {
+    async function callApi(){
+        let items = await API.get("/todoList.json");
+        let array = [];
 
-    let localStorageItems = localStorage.getItem("itemData");
-    localStorageItems = JSON.parse(localStorageItems);
-
-    if (localStorageItems) {
-      let reports = localStorageItems.filter(taskItem => taskItem.reporter === useris);
-      setMyReports(reports);
-
-    }
-    else {
-      let taskReports = task.filter(item => item.reporter === useris);
-      setMyReports(taskReports)
-    }
-
-  }, []);
-
-  let updateMyReports = () => {
-    let update = task.filter(report => report.reporter === useris);
-    setMyReports(update);
-  }
-  // statuso pakeitimas
-  let changeStatus = (item) => {
-    task.map((taskas) => {
-      if (taskas.id === item.id) {
-
-        taskas.status = "Approved";
-        localStorage.setItem("itemData", JSON.stringify(task));
-      }
-    });
-    updateMyReports();
-  };
-
-  let submit = (newItem) => {
-    newItem.id = task.length + 1;
-    newItem.reporter = useris;
-    let date = new Date();
-    setTask([...task, newItem]);
-    updateMyReports();
-  };
-  useEffect(() => {
-    let itemData = localStorage.getItem("itemData");
-    itemData = JSON.parse(itemData);
-
-    itemData ? setTask(itemData) : setTask(task);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("itemData", JSON.stringify(task));
-    updateMyReports();
-  }, [task])
-
-
-  let cmt = (id, value) => {
-    task.map(tsk => {
-      if (id === tsk.id) {
-
-        let date = new Date();
-
-        let o = {
-          nm:useris,
-          c:value,
-          dt:date.toDateString()
-        
+        for (let val in items.data) {
+          items.data[val].id = val;
+          array.push(items.data[val])
         }
 
-        tsk.koment.push(o);
-        localStorage.setItem("itemData", JSON.stringify(task));
+        setTask(array);
+        setload({ display: "none", text: "" })
 
-      }
-    })
+        let myreps = await API.get("/currentUser.json");
+        let reps = [];
+        let user = myreps.data.name;
+        let filtered = array.filter(item => item.reporter === user);
+        setCurrentUser(user);
+        setMyReports(filtered);
+    }
+    callApi();
+  }, [trigger])
+
+  // Adding new items
+  let addNewItem = (newItem) => {
+    newItem.number = task.length + 1;
+
+    setload({ display: "block", text: "LOADING" })
+    API.post("/todoList.json", newItem)
+      .then(response => {
+        setTrigger(!trigger);
+      })
+      .catch(err => console.log("error"));
   }
 
+  let handleSearch = (value) => {
+    let search = task.filter(item => item.name.toLowerCase().includes(value));
 
-
-  const [searchValue, setSearchValue] = useState([]);
-
-
-
-  let performSearch = (value) => {
-
-    let newArr = task.filter(item => item.name.toLowerCase().includes(value));
-
-    if (value != "") {
-      setSearchValue(newArr);
+    if (value.length > 0) {
+      setTask(search)
+      setCount(task.length);
     }
     else {
-      setSearchValue([]);
+      API.get("/todoList.json")
+        .then((response) => {
+          let array = [];
+          let data = response.data;
+
+          for (let val in data) {
+            data[val].id = val;
+            array.push(data[val])
+          }
+          setTask(array);
+        })
+        .catch((err) => { console.log("Error with firebase: " + err) })
+      setCount(0);
     }
   }
-
-
 
   return (
     <Router>
+
       <div className="home">
         <div className="home-grid-one">
-          <Navbar name={useris} handleFormSubmit={submit} search={performSearch} />
+          <Navbar handleFormSubmit={addNewItem} search={handleSearch} counterTasks={count} current={currentUser} />
         </div>
+
         <div className="home-grid-two">
+          <div className="parentLoader">
+            <div className="loader" style={load}></div>
+            <h3 className="loader-text">{load.text}</h3>
+          </div>
+
+
           <Route
             path="/home"
             exact
             render={(props) => <Table {...props} addItem={task} />}
           />
+
+          <Route
+            path="/home/myreports/:id"
+            exact
+            render={(props) => <TaskInfo  {...props} user = {currentUser} />}
+          />
+
+          <Route
+            path="/about"
+            exact
+            component={About}
+          />
+
           <Route
             path="/home/myreports"
             exact
             render={(props) => <Table {...props} addItem={myReports} />}
           />
-          <Route
-            path="/home/myreports/:id"
-            exact
-            render={(props) => <TaskInfo  {...props} change={changeStatus} comment={cmt} />}
-          />
-          <Route path="/home/search"
-            exact
-            render={(props) =>
-              searchValue ? (<Table {...props} addItem={searchValue} />) : (
-                <Redirect to="/home" />
-              )
-            }
-          />
-          <Route
-            path="/home/userinformation"
-            exact
-            component={About}
-          />
+
 
         </div>
       </div>
+
     </Router>
 
   );
