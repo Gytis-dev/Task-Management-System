@@ -10,6 +10,10 @@ import { faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const Home = (props) => {
 
+  const history = useHistory();
+
+  console.log(history);
+
   const [trigger, setTrigger] = useState(false);
   const [task, setTask] = useState([{}]);
   const [count, setCount] = useState(0);
@@ -75,6 +79,7 @@ const Home = (props) => {
       setCount(0);
     }
   }
+
 
   return (
     <Router>

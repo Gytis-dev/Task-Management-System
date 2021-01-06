@@ -101,6 +101,7 @@ const Navbar = (props) => {
     }
   };
   function logout() {
+    localStorage.clear();
     window.location.href = "/";
   }
 

@@ -36,16 +36,18 @@ const Login = () => {
 
   let verification = () => {
     let userStatus = false;
+
     for (var i in user) {
       if (user[i].name == input.username && user[i].password == input.password) {
         userStatus = true;
+        // for routing purposes
+        localStorage.setItem("token", user[i].name);
       }
       if (userStatus === true) {
 
         axios.patch("/currentUser.json", {name: input.username})
         .then (res => console.log("Logged in succesfully"))
         .catch (err => console.log(err))
-
 
         loginVerification.isLogged();
         return "/home";
