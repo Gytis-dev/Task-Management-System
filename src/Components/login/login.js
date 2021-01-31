@@ -42,13 +42,7 @@ const Login = () => {
       (key) => user[key].name === input.username &&  user[key].password === input.password
     );
     if (value !== undefined && input.password !== '' && input.username !== '') {
-    
       loginVerification.isLogged();
-      localStorage.setItem("token", input.username);
-
-      axios.patch("/currentUser.json", {name: input.username})
-        .then(res => console.log("success"))
-        .catch(err => console.log(err))
       return "/home";
     }
     else{

@@ -65,13 +65,13 @@ const Register = () => {
       samePassword: input.samePassword,
     };
     const usersItems = user;
-    if (input.name.length < 2) {
+    if (input.name.length < 6) {
       setError({
-        errorText: "Enter at least 2 characters",
+        errorText: "This name to be more 6",
         errorStyle: "visible",
       });
     }
-    if (input.name.length > 1) {
+    if (input.name.length > 6) {
       setError({
         errorText: "",
         errorStyle: "",
@@ -80,7 +80,7 @@ const Register = () => {
 
     if (input.name !== input.userName) {
       setErrorUser({
-        errorUserText: "username is not the same",
+        errorUserText: "This name not same",
         errorUserStyle: "visible",
       });
     }
@@ -93,7 +93,7 @@ const Register = () => {
 
     if (input.password.length < 9) {
       setErrorPassword({
-        errorTextPassword: "Password should be longer than 9 characters",
+        errorTextPassword: "This password to be more 9",
         errorStylePassword: "visible",
       });
     }
@@ -129,7 +129,7 @@ const Register = () => {
       }
       
       if (
-        input.name.length > 1 &&
+        input.name.length > 6 &&
         input.password.length > 9 &&
         value === undefined &&
         input.password === input.samePassword &&
@@ -153,7 +153,7 @@ const Register = () => {
         (key) => usersItems[key].name === input.name
       );
       if (
-        input.name.length > 1 &&
+        input.name.length > 6 &&
         input.password.length > 9 &&
         value === undefined &&
         input.password === input.samePassword &&
@@ -182,12 +182,12 @@ const Register = () => {
       </div>
         <div className="login-card-register">
           <div className="login-card-register-name g-center font-sami-big">
-            Register
+            Register in
           </div>
           <div className="g-center">
             <label className="error">
               <input
-                className="g-login-input  login-card-register-position-input-left "
+                className="g-login-input  login-card-register-postion-input-left "
                 type="text"
                 placeholder="Username"
                 value={input.name}
@@ -204,7 +204,7 @@ const Register = () => {
 
             <label className="error">
               <input
-                className="g-login-input login-card-register-position-input-left login-card-register-position-input-right"
+                className="g-login-input login-card-register-postion-input-left login-card-register-postion-input-right"
                 type="text"
                 placeholder="Name"
                 value={input.userName}
@@ -222,7 +222,7 @@ const Register = () => {
           <div className="g-center">
             <label className="error">
               <input
-                className="g-login-input login-card-register-position-input-left"
+                className="g-login-input login-card-register-postion-input-left"
                 type="password"
                 placeholder="Password"
                 value={input.password}
@@ -239,7 +239,7 @@ const Register = () => {
 
             <label className="error">
               <input
-                className="g-login-input  login-card-register-position-input-left login-card-register-position-input-right"
+                className="g-login-input  login-card-register-postion-input-left login-card-register-postion-input-right"
                 type="password"
                 placeholder="Same password"
                 value={input.samePassword}
