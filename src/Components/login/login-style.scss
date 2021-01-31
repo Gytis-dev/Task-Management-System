@@ -37,18 +37,21 @@
 .login-card-register {
   display: grid;
   color: $red-light;
-  grid-gap: 28px;
+  grid-gap: 35px;
   position: absolute;
   width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+ 
+
   &-name {
     text-transform: uppercase;
     letter-spacing: 1px;
   }
   &-postion-input-left{
     margin-left:16px;
+   
   }
   &-postion-input-right{
     margin-right:16px;
@@ -94,16 +97,26 @@
 }
 .error{
   position: relative;
+  
 }
+
 .erroras {
   color:$red-light;
   font-size:12px;
-  font-weight: 600;
   font-family: sans-serif;
-  position: absolute;
-  bottom: -20px;
-  left: 20px;
+  display:block;
+  width:200px;
+  // position: absolute;
+  // bottom: -25px;
+  // left: 20px;
+  display:block;
+  position:absolute;
+  top:125%;
+
+  // background:red;
+  
 }
+
 
 
 .cls {

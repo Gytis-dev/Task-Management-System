@@ -42,6 +42,7 @@ const Login = () => {
       (key) => user[key].name === input.username &&  user[key].password === input.password
     );
     if (value !== undefined && input.password !== '' && input.username !== '') {
+      localStorage.setItem("user", "logged-in")
       loginVerification.isLogged();
       return "/home";
     }

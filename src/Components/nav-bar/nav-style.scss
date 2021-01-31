@@ -27,7 +27,7 @@
   position: relative;
   width: 275px;
   &-search-center{
-    display: flex;
+    display:block;;
     justify-content: center;
     align-items: flex-start;
     text-align: flex-start;
@@ -221,6 +221,7 @@
   animation-duration:3s;
   color: $white-light;
   font-weight: 200;
+
 }
 
 @keyframes ani {

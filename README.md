@@ -1,6 +1,6 @@
 ## Task Management System
 
-This project was built for software engineering college project. The purpose of **Task Management System** is to provide efficient and well organised environment for team work.
+This project was built for software engineering course project. The purpose of **Task Management System** is to provide efficient and well organised environment for team work.
 
 Please be informed that this project is built with [Firebase](https://firebase.google.com/), therefore certain application security rules might be restricted due to security purposes. If you wish to explore this application in detail, please feel free to contact me via [GitHub](https://github.com/Gytis-dev) / [LinkedIn](https://lt.linkedin.com/in/gytis-bliuvas-7a0441109/) or email specified in my GitHub account. 
 
@@ -46,12 +46,12 @@ check each task requirements and see comment's from colleagues
 
 Gytis Bliuvas:
 
-[LinkedIn](https://lt.linkedin.com/in/gytis-bliuvas-7a0441109/)
-[GitHub](https://github.com/Gytis-dev)
+* [LinkedIn](https://lt.linkedin.com/in/gytis-bliuvas-7a0441109/)
+* [GitHub](https://github.com/Gytis-dev)
 
 Modestas Bieliauskas:
 
-[GitHub](https://github.com/Mikolonija)
+* [GitHub](https://github.com/Mikolonija)
 
 
 

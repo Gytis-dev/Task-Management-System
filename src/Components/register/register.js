@@ -65,13 +65,13 @@ const Register = () => {
       samePassword: input.samePassword,
     };
     const usersItems = user;
-    if (input.name.length < 6) {
+    if (input.name.length < 1) {
       setError({
-        errorText: "This name to be more 6",
+        errorText: "Please enter more than 1 character",
         errorStyle: "visible",
       });
     }
-    if (input.name.length > 6) {
+    if (input.name.length > 1) {
       setError({
         errorText: "",
         errorStyle: "",
@@ -80,7 +80,7 @@ const Register = () => {
 
     if (input.name !== input.userName) {
       setErrorUser({
-        errorUserText: "This name not same",
+        errorUserText: "Names do not match",
         errorUserStyle: "visible",
       });
     }
@@ -93,7 +93,7 @@ const Register = () => {
 
     if (input.password.length < 9) {
       setErrorPassword({
-        errorTextPassword: "This password to be more 9",
+        errorTextPassword: "Password has to have more characters than 9",
         errorStylePassword: "visible",
       });
     }
@@ -106,7 +106,7 @@ const Register = () => {
 
     if (input.password !== input.samePassword) {
       setErrorSamePassword({
-        errorSameTextPassword: "This password not same",
+        errorSameTextPassword: "Passwords do not match",
         errorSameStylePassword: "visible",
       });
     }
@@ -123,13 +123,13 @@ const Register = () => {
       );
       if (value) {
         setError({
-          errorText: "This name is already in use",
+          errorText: "This username is already in use",
           errorStyle: "visible",
         });
       }
       
       if (
-        input.name.length > 6 &&
+        input.name.length > 1 &&
         input.password.length > 9 &&
         value === undefined &&
         input.password === input.samePassword &&
@@ -153,7 +153,7 @@ const Register = () => {
         (key) => usersItems[key].name === input.name
       );
       if (
-        input.name.length > 6 &&
+        input.name.length > 1 &&
         input.password.length > 9 &&
         value === undefined &&
         input.password === input.samePassword &&
