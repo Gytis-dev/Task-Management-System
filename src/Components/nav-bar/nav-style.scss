@@ -23,11 +23,15 @@
   grid-template-columns: 1fr;
   color: $white-light;
   grid-template-rows: 1fr;
-  height: 80vh;
+  height: 84vh;
   position: relative;
   width: 275px;
-  overflow-y: auto;
-
+  &-search-center{
+    display: block;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: flex-start;
+  }
   &-search-style{
     outline: none;
     background-color: #eef2f7;
@@ -47,7 +51,7 @@
     margin:0px 20px;
   }
   &-footer{
-    margin:20px 20px;
+    margin:20px 20px 16px 20px;
   }
   &-footer:hover:before {
     width: 50% !important;
@@ -68,7 +72,7 @@
     color: $red-light;
   }
 
-  &-icon-postion {
+  &-icon-position {
     margin-right: 10px;
   }
   &-menu-one {
@@ -182,7 +186,7 @@
     height: 70px;
   }
 
-  &-input-button-postion {
+  &-input-button-position {
     margin-right: 22px;
   }
   &-input-design {

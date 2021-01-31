@@ -4,11 +4,11 @@
 .table-main {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 6% 88% 6%;
-  height: 100vh;
-  padding:20px;
+  grid-template-rows: 32px 88% 6%;
+  padding:0 16px 16px 16px;
+  height: 80vh;
   font-family: sans-serif;
-  background-color:#fff;
+  // background-color:#fff;
   &-header {
     display: grid;
     grid-row: 1;
@@ -149,7 +149,7 @@
     }
   }
  
-  &-button-postion {
+  &-button-position {
     margin-top: 16px;
   }
   &-right-menu {
@@ -165,7 +165,7 @@
   }
 }
 .task-text-not-found{
-  &-postion {
+  &-position {
     text-align: center;
     margin-top: 24%;
   }
@@ -196,7 +196,7 @@
   .head {
     font-size: 35pt;
     color:gray;
-    padding:5px 30px;
+    padding:16px 16px 24px 16px;
     font-weight: 400;
     text-shadow: 1px 0px 4px rgba(164, 164, 167, 0.78);
     font-family: 'Poppins', sans-serif;

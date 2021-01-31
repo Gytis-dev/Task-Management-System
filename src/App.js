@@ -8,7 +8,6 @@ import PrivateRoute from "./Components/private-route";
 import Error from "./Components/errorPage/error";
 
 function App() {
-
   return (
     <Router>
       <Switch>

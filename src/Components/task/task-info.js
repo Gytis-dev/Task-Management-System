@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import API from "../Axios/config";
-
-
+import StatusAlert, { StatusAlertService } from 'react-status-alert'
+import 'react-status-alert/dist/status-alert.css'
 
 const TaskInfo = (props) => {
 
   const [state, setState] = useState({});
   const [komentaras, setKomentaras] = useState([]);
   const [val, setVal] = useState("");
-  const [commentStyle, setCommentStyle] = useState(false);
+  // const [commentStyle, setCommentStyle] = useState(false);
 
   useEffect(() => {
     API.get(`/todoList/${props.location.state.from.id}.json`)
@@ -26,11 +26,11 @@ const TaskInfo = (props) => {
         setKomentaras(items);
       })
       .catch(err => console.log(err))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   let changeStatus = (e) => {
-
-    if (state.status == "Approved" || state.status == "Rejected") {
+    if (state.status === "Approved" || state.status === "Rejected") {
       return 0;
     }
     else {
@@ -45,8 +45,8 @@ const TaskInfo = (props) => {
   };
 
   let addComment = () => {
-    if (state.status == "Approved" || state.status == "Rejected") {
-      alert("This issue has been already resolved")
+    if (state.status === "Approved" || state.status === "Rejected") {
+      StatusAlertService.showWarning("This issue has been already resolved");
       return 0;
     }
     else {
@@ -66,6 +66,7 @@ const TaskInfo = (props) => {
   }
   let checkStyle = () => {
 
+    // eslint-disable-next-line default-case
     switch (state.status) {
       case "Approved":
         return { color: "rgb(8, 95, 99)" }
@@ -88,7 +89,7 @@ const TaskInfo = (props) => {
 
   return (
     <div className="task-info">
-
+      <StatusAlert />
       <div className="task-info-left-menu">
         <div
           className="task-info-back-button g-left font-normal-font"
@@ -97,13 +98,24 @@ const TaskInfo = (props) => {
       </div>
         <div className="font-normal-big g-left task-info-title-name">{" "}</div>
         <div className="task-info-body-grid">
+          
           <div>
+            
             <div className="font-normal-font g-left task-info-body-grid-title ">
               <h4 style={{ margin: "0" }}>Reporter:{" "}</h4>
               <div className="task-info-body-grid-descripsion">
                 {state.reporter}
               </div>
             </div>
+
+            <div className="font-normal-font g-left task-info-body-grid-title ">
+              <h4 style={{ margin: "0" }}>Task name:{" "}</h4>
+              <div className="task-info-body-grid-descripsion">
+                {state.name}
+              </div>
+            </div>
+
+
             <div className="font-normal-font g-left task-info-body-grid-title ">
               <h4 style={{ margin: "0" }}>Task priority:{" "}</h4>
               <div className="task-info-body-grid-descripsion">
@@ -121,10 +133,9 @@ const TaskInfo = (props) => {
             <div className=" g-left">
               <div
                 className="font-normal-font task-info-body-grid-title-status"
-
               >
                 <div className="btn-parent">
-                  <h4 style={{ margin: "0" }}>Task status:{" "}<span style={checkStyle()}>{state.status}</span></h4>
+                  <h4 className="g-left" style={{ margin: "0" }}>Task status:{" "}<span style={checkStyle()}>{state.status}</span></h4>
                   <button className="btn-btn" onClick={(e) => changeStatus(e)}>Verification</button>
                   <button className="btn-btn" onClick={(e) => changeStatus(e)}>Waiting answers</button>
                   <button className="btn-btn" onClick={(e) => changeStatus(e)}>Approved</button>
@@ -166,7 +177,7 @@ const TaskInfo = (props) => {
             onChange={(e) => setVal(e.target.value)}
           />
         </div>
-        <div className="g-right task-info-button-postion">
+        <div className="g-right task-info-button-position">
           <div
             className="g-btn-comment font-normal-font g-center"
             onClick={addComment}

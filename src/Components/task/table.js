@@ -1,7 +1,7 @@
 import React, {} from "react";
 import Task from "../../Components/task/task";
 import "../task/task-style.scss";
-import "../../global-style/postion.scss";
+import "../../global-style/position.scss";
 import "../../global-style/font.scss";
 
 const Table = (props) => {
@@ -22,7 +22,7 @@ const Table = (props) => {
       <div className="table-main-body">
         <Task property={props.addItem} />
       </div>
-      <div className="table-main-footer "></div>
+      {/* <div className="table-main-footer "></div> */}
     </div>
     </div>
     

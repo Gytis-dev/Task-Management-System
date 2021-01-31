@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../task/task-style.scss";
-import "../../global-style/postion.scss";
+import "../../global-style/position.scss";
 import "../../global-style/buttons.scss";
 
 import "../../global-style/font.scss";

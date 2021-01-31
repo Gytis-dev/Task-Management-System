@@ -1,13 +1,13 @@
 import React from "react";
 import "../errorPage/error.scss";
-import "../../global-style/postion.scss";
+import "../../global-style/position.scss";
 import "../../global-style/font.scss";
 import "../../global-style/colors.scss";
 
 const Error = () => {
   return (
     <div className="g-center main-error">
-      <div className="main-error-postion">
+      <div className="main-error-position">
         <div className=" main-error-text-header">
           <span className="white-light">4</span>
           <span className="red-light">0</span>

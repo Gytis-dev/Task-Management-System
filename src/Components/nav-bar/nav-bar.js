@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../nav-bar/nav-style.scss";
 import { Link, NavLink } from "react-router-dom";
 import "../../global-style/font.scss";
-import "../../global-style/postion.scss";
+import "../../global-style/position.scss";
 import {
   faHome,
   faPlusCircle,
@@ -124,7 +124,7 @@ const Navbar = (props) => {
       <div className="overlay-createIssue" style={style} />
 
       <div className="navbar font-normal ">
-        <div className="navbar-searchbar">
+        <div className="navbar-searchbar navbar-search-center">
           <input
             className="navbar-search-style"
             type="text"
@@ -143,13 +143,13 @@ const Navbar = (props) => {
         <div className="navbar-menu-one g-left">
           <NavLink exact to="/home" activeStyle={{ color: "#fe4066" }}>
             <div className="navbar-design">
-              <FontAwesomeIcon className="navbar-icon-postion" icon={faHome} />
+              <FontAwesomeIcon className="navbar-icon-position" icon={faHome} />
               Dashboard
             </div>
           </NavLink>
           <NavLink to="/about">
             <div className="navbar-design">
-              <FontAwesomeIcon className="navbar-icon-postion" icon={faUser} />
+              <FontAwesomeIcon className="navbar-icon-position" icon={faUser} />
             About
           </div>
           </NavLink>
@@ -158,7 +158,7 @@ const Navbar = (props) => {
             onClick={() => setStyle({ display: "block" })}
           >
             <FontAwesomeIcon
-              className="navbar-icon-postion"
+              className="navbar-icon-position"
               icon={faPlusCircle}
             />
             Create Issue
@@ -171,7 +171,7 @@ const Navbar = (props) => {
           >
             <div className="navbar-design  ">
               {" "}
-              <FontAwesomeIcon className="navbar-icon-postion" icon={faFlag} />
+              <FontAwesomeIcon className="navbar-icon-position" icon={faFlag} />
               My Reports
             </div>
           </NavLink>
@@ -179,7 +179,7 @@ const Navbar = (props) => {
         </div>
         <div onClick={() => logout()} className="navbar-design navbar-footer">
           <FontAwesomeIcon
-            className="navbar-icon-postion"
+            className="navbar-icon-position"
             icon={faSignOutAlt}
           />
             Log out
@@ -254,7 +254,7 @@ const Navbar = (props) => {
           </div>
           <div className="g-right">
             <div
-              className="font-normal-font g-btn g-center createIssue-input-button-postion  "
+              className="font-normal-font g-btn g-center createIssue-input-button-position  "
               onClick={() => setStyle({ display: "none" })}
             >
               Cancel

@@ -14,7 +14,7 @@ if (props.property.length > 0){
 else {
   return (
     <div className="task-text-not-found">
-      <div className="task-text-not-found-postion  font-sami-big white-light  ">Sorry, no tasks found according to your search criteria</div>
+      <div className="task-text-not-found-position  font-sami-big white-light  ">Sorry, no tasks found according to your search criteria</div>
     </div>
   );
 }

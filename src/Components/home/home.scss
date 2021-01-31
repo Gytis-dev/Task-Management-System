@@ -6,14 +6,16 @@
   grid-template-columns: auto 1fr;
   height: 100vh;
   &-grid-one {
-    grid-column: 1 / 2;
+    grid-column: 1 ;
     background-color: #313a46;
-    
+    overflow-y: auto;
   }
 
   &-grid-two {
     grid-column: 2 / 4;
     overflow-y: auto;
+    
+    // height: 100vh;
     background-color:#fff;
   }
 }

@@ -10,10 +10,6 @@ import { faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const Home = (props) => {
 
-  const history = useHistory();
-
-  console.log(history);
-
   const [trigger, setTrigger] = useState(false);
   const [task, setTask] = useState([{}]);
   const [count, setCount] = useState(0);
@@ -83,18 +79,15 @@ const Home = (props) => {
 
   return (
     <Router>
-
       <div className="home">
         <div className="home-grid-one">
           <Navbar handleFormSubmit={addNewItem} search={handleSearch} counterTasks={count} current={currentUser} />
         </div>
-
         <div className="home-grid-two">
           <div className="parentLoader">
             <div className="loader" style={load}></div>
             <h3 className="loader-text">{load.text}</h3>
           </div>
-
 
           <Route
             path="/home"
@@ -119,7 +112,6 @@ const Home = (props) => {
             exact
             render={(props) => <Table {...props} addItem={myReports} />}
           />
-
 
         </div>
       </div>
