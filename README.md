@@ -4,23 +4,23 @@ This project was built for software engineering college project. The purpose of 
 
 Please be informed that this project is built with [Firebase](https://firebase.google.com/), therefore certain application security rules might be restricted due to security purposes. If you wish to explore this application in detail, please feel free to contact me via [GitHub](https://github.com/Gytis-dev) / [LinkedIn](https://lt.linkedin.com/in/gytis-bliuvas-7a0441109/) or email specified in my GitHub account. 
 
-**Login / Register functionality**:
-create new users
+## Login / Register functionality
+create new users\
 login with existing account
 
 ![Alt text](src/images/Capture4.JPG?raw=true "Title")
 
-**Dashboard**:
+## Dashboard
 explore and monitor tasks created by colleagues based on their priority level
 
 ![Alt text](src/images/Capture.JPG?raw=true "Title")
 
-**Create new tasks**:
+## Create new tasks
 create new issues for development with detailed task requirements
 
 ![Alt text](src/images/Capture2.JPG?raw=true "Title")
 
-**Task view**:
+## Task view
 check each task requirements and see comment's from colleagues
 
 ![Alt text](src/images/Capture3.JPG?raw=true "Title")
@@ -35,6 +35,8 @@ check each task requirements and see comment's from colleagues
 
 3. Start the application:
 `npm start`
+
+## Built with
 
 * [React](https://reactjs.org/) - Javascript library for building user interfaces.
 * [React-Router](https://reacttraining.com/react-router/) - Declarative Routing for React.JS.
