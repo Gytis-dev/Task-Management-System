@@ -28,7 +28,7 @@ check each task requirements and see comment's from colleagues
 ## Get started
 
 1. Clone the repository:
-'https://github.com/Gytis-dev/Task-Management-System'
+`https://github.com/Gytis-dev/Task-Management-System`
 
 2. Install dependencies:
 `npm install`
